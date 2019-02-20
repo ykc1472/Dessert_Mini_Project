@@ -8,14 +8,17 @@
 		alert("${mesg}");
 		<c:remove var="mesg" />
 	</c:if>
+	
 	$(document).ready(function(){
 		$("form").on("submit", function(event){
 			if($("#userid").val().length == 0){
 				alert("ID를 입력해주세요.");
+				$("#userid").focus();
 				event.preventDefault();
-			} else if ($("#userid").val().length == 0){
+			} else if ($("#userpw").val().length == 0){
 				alert("PW를 입력해주세요.");
 				event.preventDefault();
+				$("#userpw").focus();
 			}
 		})
 	})
