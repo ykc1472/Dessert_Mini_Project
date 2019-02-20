@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MemberMapper">
+
+	<select id="phoneNumberCheck" parameterType="string" resultType="int">
+		select count(*) from member
+		where phone = #{number}
+	</select>
+	
+	<select id="nickNameCheck" parameterType="string" resultType="int">
+		select count(*) from member
+		where USERNICKNAME = #{nickName}
+	</select>
+	
+	<select id="userIDCheck" parameterType="string" resultType="int">
+		select count(*) from member
+		where userid = #{userid}
+	</select>
+	
+	<insert id="userAdd" parameterType="MemberDTO">
+		insert into member (userid, userpw, username, usernickname, email, phone, address_post, address_f, address_l)
+		values (#{userid}, #{userpw}, #{username}, #{usernicname}, #{email}, #{phone}, #{address_post}, #{address_f}, #{address_l})
+	</insert>
+	
+	<select id="loginAction" parameterType="MemberDTO" resultType="MemberDTO">
+		select userid, username, usernickname, grent from member
+		where userid = #{userid}
+		and userpw = #{userpw}
+	</select>
+	
+</mapper>

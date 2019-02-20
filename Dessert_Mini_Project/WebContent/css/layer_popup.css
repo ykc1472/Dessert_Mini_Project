@@ -1,0 +1,23 @@
+@charset "UTF-8";
+/* 마스크 뛰우기 */
+#mask {  
+    position:absolute;  
+    z-index:9000;  
+    background-color:#000;  
+    display:none;  
+    left:0;
+    top:0;
+} 
+/* 팝업으로 뜨는 윈도우 css  */ 
+.window{
+    display: none;
+    position:absolute;  
+    left:50%;
+    top:50px;
+    margin-left: -500px;
+    width:1000px;
+    height:500px;
+    background-color:#FFF;
+    z-index:10000;   
+ }
+ 

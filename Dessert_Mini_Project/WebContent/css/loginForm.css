@@ -1,0 +1,6 @@
+@charset "UTF-8";
+
+a {font-size : 9px; text-decoration:none}
+a:link, a:visited, a:active, a:hover {color:#00004d;}
+#submit {height: 70px;}
+
