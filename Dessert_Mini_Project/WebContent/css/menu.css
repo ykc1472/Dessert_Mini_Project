@@ -13,8 +13,8 @@ div.center {
 	margin : auto;
 }
 .menu {
-	font-family: 나눔손글씨 펜;
-	font-size : 25px; 
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size : 15px; 
 }
 a:link, a:visited, a:active {
 	text-decoration:none;
@@ -25,8 +25,8 @@ a:hover{
 
 a.menu:link, a.menu:visited, a.menu:active, a.menu:hover {color:#00004d;}
 .menuTop {
-	font-family: 나눔손글씨 펜;
-	font-size : 30px; 
+		font-family: 'Noto Sans KR', sans-serif;
+	font-size : 20px; 
 }
 a.menuTop:link, a.menuTop:visited, a.menuTop:active, a.menuTop:hover {color:#00004d;}
 
