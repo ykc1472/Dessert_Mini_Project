@@ -62,7 +62,7 @@ public class SendMailServlet extends HttpServlet {
 			msg.setSubject(subject); // 제목설정
 			msg.setSentDate(new java.util.Date()); // 보내는 날짜 설정
 			msg.setContent(content, "text/html; charset=UTF-8"); // 내용 설정(MIME 지정-HTML 형식)
-			// Transport.send(msg); // 메일 보내기
+			Transport.send(msg); // 메일 보내기
 		} catch (MessagingException ex) {
 			System.out.println("mail send error : " + ex.getMessage());
 			ex.printStackTrace();
