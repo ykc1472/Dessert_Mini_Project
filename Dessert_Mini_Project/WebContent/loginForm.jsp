@@ -12,7 +12,7 @@
 <div align="right">
 	<jsp:include page="common/top.jsp" flush="true" /><br>
 </div>
-<jsp:include page="common/menu.jsp" flush="true" />
-<jsp:include page="member/loginForm.jsp" flush="true" />
+	<jsp:include page="common/menu.jsp" flush="true" />
+	<jsp:include page="member/loginForm.jsp" flush="true" />
 </body>
 </html>

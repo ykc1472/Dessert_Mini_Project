@@ -38,7 +38,7 @@
 		<c:forEach var="list" items="${paging.qnaboardlist}">
 			<tr>
 				<td align="center">${list.qna_num}</td>
-				<td><a href="qna_BoardForm?pick=${list.qna_num}">${list.qna_title}</a></td>
+				<td><a href="QnABoardForm?pick=${list.qna_num}">${list.qna_title}</a></td>
 				<td align="center">${list.nickname}</td>
 				<td align="center">${list.writedate}</td>
 			</tr>

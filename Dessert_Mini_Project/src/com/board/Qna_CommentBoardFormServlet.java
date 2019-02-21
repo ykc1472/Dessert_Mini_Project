@@ -15,8 +15,10 @@ public class Qna_CommentBoardFormServlet extends HttpServlet {
 		
 		int pick = Integer.parseInt(request.getParameter("pick"));
 		
-		RequestDispatcher dis = request.getRequestDispatcher("");
 		
+		
+		RequestDispatcher dis = request.getRequestDispatcher("");
+		dis.forward(request, response);
 		
 		
 	}

@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.dto.PagingQnABoardDTO;
 import com.dto.QnABoardCommentDTO;
+import com.dto.QnABoardDTO;
 
 public class QnABoardDAO {
 	public PagingQnABoardDTO selectAllQnABoard(SqlSession session, PagingQnABoardDTO paging) {
@@ -21,8 +22,16 @@ public class QnABoardDAO {
 		
 		return session.selectList("BoardMapper.selectQnaCommentList", paging.getQnaboardlist());
 	}
+	
 	public int qnaCountAll(SqlSession session) {
 		
 		return session.selectOne("BoardMapper.QnACountAll");
 	}
+	
+	public QnABoardDTO selectQnABoard(SqlSession session, int qna_num) {
+		
+		return session.selectOne("BoardMapper.selectQnABoard", qna_num);
+	}
+	
+	
 }

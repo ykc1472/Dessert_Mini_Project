@@ -31,4 +31,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select count(*) from qnaboard
 	</select>
 	
+	<select id="selectQnABoard" resultType="QnABoardDTO" parameterType="int">
+		select qna_num, qna_title, nickname, content, to_char(writedate, 'yyyy"년 "mm"월 "dd"일"') writedate, to_char(rewritedate, 'yyyy"년 "mm"월 "dd"일"') rewritedate
+		from qnaboard
+		where qna_num = #{qna_num}
+	</select>
+	
 </mapper>

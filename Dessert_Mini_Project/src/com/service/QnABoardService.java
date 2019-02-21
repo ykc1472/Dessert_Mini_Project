@@ -5,6 +5,7 @@ import org.apache.ibatis.session.SqlSession;
 import com.config.MySqlSessionFactory;
 import com.dao.QnABoardDAO;
 import com.dto.PagingQnABoardDTO;
+import com.dto.QnABoardDTO;
 
 public class QnABoardService {
 	public PagingQnABoardDTO selectAllQnABorder(PagingQnABoardDTO paging) {
@@ -18,5 +19,19 @@ public class QnABoardService {
 		}
 	
 		return paging;
+	}
+	
+	public QnABoardDTO seleclt (int qna_num) {
+		SqlSession session = MySqlSessionFactory.getSession();
+		QnABoardDTO dto = null;
+		try {
+			QnABoardDAO dao = new QnABoardDAO();
+			dto = dao.selectQnABoard(session, qna_num);
+			
+		} finally {
+			session.close();
+		}
+	
+		return dto;
 	}
 }
