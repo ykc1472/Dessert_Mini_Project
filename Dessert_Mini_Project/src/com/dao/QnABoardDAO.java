@@ -2,27 +2,27 @@ package com.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 
-import com.dto.PagingQnABorderDTO;
+import com.dto.PagingQnABoardDTO;
 import com.dto.QnABoardCommentDTO;
 
 public class QnABoardDAO {
-	public PagingQnABorderDTO selectAllQnABorder(SqlSession session, PagingQnABorderDTO paging) {
+	public PagingQnABoardDTO selectAllQnABoard(SqlSession session, PagingQnABoardDTO paging) {
+		paging.setQnaboardlist(session.selectList("BoardMapper.selectAllQnABoard", null, new RowBounds(paging.getOffset(), paging.getLimit())));
 		
-		paging.setQnABorderlist(session.selectList("BorderMapper.selectAllQnABorder"));
-		
-		paging.setQnACommentlist(selectQnACommentList(session, paging));
+		paging.setQnacommentlist(selectQnACommentList(session, paging));
 		paging.setTotal(qnaCountAll(session));
 		
 		return paging;
 	}
-	public List<QnABoardCommentDTO> selectQnACommentList(SqlSession session, PagingQnABorderDTO paging){
+	public List<QnABoardCommentDTO> selectQnACommentList(SqlSession session, PagingQnABoardDTO paging){
 		
-		return session.selectList("BorderMapper.selectQnaCommentList", paging.getQnABorderlist());
+		return session.selectList("BoardMapper.selectQnaCommentList", paging.getQnaboardlist());
 	}
 	public int qnaCountAll(SqlSession session) {
 		
-		return session.selectOne("BorderMapper.QnACountAll");
+		return session.selectOne("BoardMapper.QnACountAll");
 	}
 }

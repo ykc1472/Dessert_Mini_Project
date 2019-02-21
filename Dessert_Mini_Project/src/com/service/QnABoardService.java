@@ -4,14 +4,14 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.config.MySqlSessionFactory;
 import com.dao.QnABoardDAO;
-import com.dto.PagingQnABorderDTO;
+import com.dto.PagingQnABoardDTO;
 
 public class QnABoardService {
-	public PagingQnABorderDTO selectAllQnABorder(PagingQnABorderDTO paging) {
+	public PagingQnABoardDTO selectAllQnABorder(PagingQnABoardDTO paging) {
 		SqlSession session = MySqlSessionFactory.getSession();
 		try {
 			QnABoardDAO dao = new QnABoardDAO();
-			paging = dao.selectAllQnABorder(session, paging);
+			paging = dao.selectAllQnABoard(session, paging);
 			
 		} finally {
 			session.close();

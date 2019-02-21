@@ -18,8 +18,10 @@
 			<a href="MemberAdd" class="menuTop">회원가입</a>&nbsp;
 		</c:otherwise>
 	</c:choose>
-	<div align="center"><img src="content/image/order/mainBanner.jpg" width = "200"></div>
-	&nbsp
+	<div align="center"><img src="content/image/order/mainBanner.jpg" width = "200">
+	<div></div>
+	
+	</div>
 	</p>
 	
 	

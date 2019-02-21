@@ -16,9 +16,13 @@ div.center {
 	font-family: 나눔손글씨 펜;
 	font-size : 25px; 
 }
-a{
+a:link, a:visited, a:active {
 	text-decoration:none;
 }
+a:hover{
+	text-decoration: underline;
+}
+
 a.menu:link, a.menu:visited, a.menu:active, a.menu:hover {color:#00004d;}
 .menuTop {
 	font-family: 나눔손글씨 펜;
@@ -38,7 +42,16 @@ body{
 }
 
 .menus {
-	border-top: 5px ridge red;
-	border-bottom: 5px soid red;
+	border-top: 5px ridge #F7F3DC;
+	border-bottom: 5px ridge #F9F7E8;
+	padding-top: 20px;
+	padding-bottom: 20px;
 	
 }
+.topmenu {
+	position: absolute;
+	top: 0px;
+	left: 200px;
+}
+
+

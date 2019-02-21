@@ -9,11 +9,10 @@
 <link rel="stylesheet" type="text/css" href="css/menu.css">
 </head>
 <body>
-	<h1>memberForm</h1>
 	<div align="right">
 	<jsp:include page="common/top.jsp" flush="true" /><br>
 </div>
 	<jsp:include page="common/menu.jsp" flush="true" />
-	<jsp:include page="border/qna_boardForm.jsp" flush="true" />
+	<jsp:include page="board/qna_boardForm.jsp" flush="true" />
 </body>
 </html>

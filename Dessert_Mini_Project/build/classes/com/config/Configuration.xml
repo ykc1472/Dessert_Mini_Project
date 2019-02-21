@@ -9,8 +9,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
    <typeAliases>
     	<typeAlias type="com.dto.MemberDTO" alias="MemberDTO"/>
     	<typeAlias type="com.dto.FoodInfoDTO" alias="FoodInfoDTO"/>
-    	<typeAlias type="com.dto.QnABorderDTO" alias="QnABorderDTO"/>
-    	<typeAlias type="com.dto.QnABorderCommentDTO" alias="QnABorderCommentDTO"/>
+    	<typeAlias type="com.dto.QnABoardDTO" alias="QnABoardDTO"/>
+    	<typeAlias type="com.dto.QnABoardCommentDTO" alias="QnABoardCommentDTO"/>
     	
    </typeAliases>
    
@@ -27,7 +27,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	</environments>
 	<mappers>
 		<mapper resource="com/config/MemberMapper.xml" />
-		<mapper resource="com/config/BorderMapper.xml" />
+		<mapper resource="com/config/BoardMapper.xml" />
 	</mappers>
 </configuration>
 

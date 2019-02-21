@@ -13,7 +13,6 @@
 <link rel="stylesheet" type="text/css" href="css/menu.css">
 <body>
 
-<h1>memberForm</h1>
 <div align="right">
 	<jsp:include page="common/top.jsp" flush="true" /><br>
 </div>

@@ -1,4 +1,4 @@
-package com.border;
+package com.board;
 
 import java.io.IOException;
 
@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/QnABorderForm")
-public class QnABorderFormServlet extends HttpServlet {
+public class QnABoardFormServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		RequestDispatcher dis = request.getRequestDispatcher("qna_borderListForm.jsp");
