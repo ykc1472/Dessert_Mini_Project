@@ -10,10 +10,13 @@
 <title>Insert title here</title>
 </head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/menu.css">
 <body>
 
 <h1>memberForm</h1>
-<jsp:include page="common/top.jsp" flush="true" /><br>
+<div align="right">
+	<jsp:include page="common/top.jsp" flush="true" /><br>
+</div>
 <jsp:include page="common/menu.jsp" flush="true" />
 <hr>
 <jsp:include page="main/main.jsp" flush="true" />
