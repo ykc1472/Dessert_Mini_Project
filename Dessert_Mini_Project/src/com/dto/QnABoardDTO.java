@@ -1,6 +1,6 @@
 package com.dto;
 
-public class QnABorderDTO {
+public class QnABoardDTO {
 	private int qna_num;
 	private String qna_title;
 	private String nickname;
@@ -9,12 +9,12 @@ public class QnABorderDTO {
 	private String rewritedate;
 	private int qna_option;
 
-	public QnABorderDTO() {
+	public QnABoardDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public QnABorderDTO(int qna_num, String qna_title, String nickname, String content, String writedate,
+	public QnABoardDTO(int qna_num, String qna_title, String nickname, String content, String writedate,
 			String rewritedate, int qna_option) {
 		super();
 		this.qna_num = qna_num;
@@ -24,6 +24,28 @@ public class QnABorderDTO {
 		this.writedate = writedate;
 		this.rewritedate = rewritedate;
 		this.qna_option = qna_option;
+	}
+
+	public QnABoardDTO(String qna_title, String nickname, String content, int qna_option) {
+		super();
+		this.qna_title = qna_title;
+		this.nickname = nickname;
+		this.content = content;
+		this.qna_option = qna_option;
+	}
+
+	public QnABoardDTO(String qna_title, String nickname, String content) {
+		super();
+		this.qna_title = qna_title;
+		this.nickname = nickname;
+		this.content = content;
+	}
+
+	public QnABoardDTO(int qna_num, String qna_title, String content) {
+		super();
+		this.qna_num = qna_num;
+		this.qna_title = qna_title;
+		this.content = content;
 	}
 
 	public int getQna_num() {

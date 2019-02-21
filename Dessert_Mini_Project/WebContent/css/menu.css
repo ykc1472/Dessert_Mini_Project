@@ -15,7 +15,6 @@ div.center {
 .menu {
 	font-family: 나눔손글씨 펜;
 	font-size : 25px; 
-	text-decoration:none;
 }
 a{
 	text-decoration:none;
@@ -27,3 +26,19 @@ a.menu:link, a.menu:visited, a.menu:active, a.menu:hover {color:#00004d;}
 }
 a.menuTop:link, a.menuTop:visited, a.menuTop:active, a.menuTop:hover {color:#00004d;}
 
+img.banner {
+   resize: both; /* 이미지 최대 사이즈에 적용 */
+   float: center; /* 가운데 정렬 */
+   max-width: 500px; /* 넓이를 지정 */
+   height: auto; /* 높이를 지정 */
+   margin: 5px 0; /* 여백을 적용 4가지 조건이 가능 위쪽, 오른쪽, 아래쪽, 왼쪽 순서 */
+}
+body{
+	background-color: #FCFAEE;
+}
+
+.menus {
+	border-top: 5px ridge red;
+	border-bottom: 5px soid red;
+	
+}

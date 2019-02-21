@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<div class="menu">
-<table align='center' cellspacing="0" cellpadding="0"
-	style=" background-color: #fff" height="10">
+<div class="menus">
+<table align='center' cellspacing="0" cellpadding="0" height="10">
 	<td width="120" align='center'><a href="#" class="menu">New</a></td>
 	<td width="120" align='center'><a href="#" class="menu">Best</a></td>
 	<td width="120" align='center'><a href="#" class="menu">생수·음료·주스</a></td>

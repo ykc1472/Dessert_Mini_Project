@@ -1,6 +1,6 @@
 package com.dto;
 
-public class QnABorderCommentDTO {
+public class QnABoardCommentDTO {
 	private int qna_num;
 	private String qnac_title;
 	private String writedate;
@@ -8,12 +8,12 @@ public class QnABorderCommentDTO {
 	private String nickname;
 	private String content;
 
-	public QnABorderCommentDTO() {
+	public QnABoardCommentDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public QnABorderCommentDTO(int qna_num, String qnac_title, String writedate, String rewritedate, String nickname,
+	public QnABoardCommentDTO(int qna_num, String qnac_title, String writedate, String rewritedate, String nickname,
 			String content) {
 		super();
 		this.qna_num = qna_num;

@@ -18,7 +18,7 @@
 	<jsp:include page="common/top.jsp" flush="true" /><br>
 </div>
 <jsp:include page="common/menu.jsp" flush="true" />
-<hr>
+
 <jsp:include page="main/main.jsp" flush="true" />
 </body>
 </html>

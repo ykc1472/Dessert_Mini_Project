@@ -14,7 +14,6 @@
 	<jsp:include page="common/top.jsp" flush="true" /><br>
 </div>
 	<jsp:include page="common/menu.jsp" flush="true" />
-	<hr>
-	<jsp:include page="border/qna_borderListForm.jsp" flush="true" />
+	<jsp:include page="border/qna_boardListForm.jsp" flush="true" />
 </body>
 </html>

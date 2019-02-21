@@ -24,7 +24,7 @@
 	})
 </script>
 
-<div align="center">
+<div align="center" class="content">
 	<form action="loginAction" method="get">
 		<table border="1">
 			<tr>
