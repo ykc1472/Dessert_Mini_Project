@@ -71,7 +71,7 @@
 			</tr>
 			<tr>
 				<td colspan="2"><input type="text" name="addr2" id="jibunAddress"
-					placeholder="지번주소"></td>
+					placeholder="지번주소"><span id="guide" style="color:#999"></span></td>
 			</tr>
 			<tr>
 				<td colspan="3" align="center"><input type="submit"

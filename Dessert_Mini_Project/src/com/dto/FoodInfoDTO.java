@@ -2,13 +2,14 @@ package com.dto;
 
 public class FoodInfoDTO {
 	private int sales;
-	private String fcode;
+	private String fcode; // 푸드코드
 	private String ftitle;
 	private int fprice;
 	private String fimage;
 	private String fcategory;
 	private String content;
 	private String fmainimage;
+	private int foption;
 
 	public FoodInfoDTO() {
 		super();
@@ -26,6 +27,14 @@ public class FoodInfoDTO {
 		this.fcategory = fcategory;
 		this.content = content;
 		this.fmainimage = fmainimage;
+	}
+
+	public int getFoption() {
+		return foption;
+	}
+
+	public void setFoption(int foption) {
+		this.foption = foption;
 	}
 
 	public int getSales() {

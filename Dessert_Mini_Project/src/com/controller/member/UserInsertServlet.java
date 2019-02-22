@@ -36,7 +36,7 @@ public class UserInsertServlet extends HttpServlet {
 			request.setAttribute("mesg", "회원가입에 실패하셨습니다. 다시 시도해 주세요.");
 		}
 		
-		RequestDispatcher dis = request.getRequestDispatcher("logingForm.jsp");
+		RequestDispatcher dis = request.getRequestDispatcher("loginForm.jsp");
 		dis.forward(request, response);
 	}
 

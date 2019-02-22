@@ -1,39 +1,38 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 	<div align="center">
 		<table border="1">
+		
 			<tr>
-				<td rowspan="5"><img src="content/image/food/A01_0.jpg" class="goods" />
-				</td>
-				<td>상품명</td>
-				<td>[제주 삼다수] 2종 (묶음)</td>
-			</tr>
-			<tr>
-				<td>가격</td>
-				<td>70000</td>
-			</tr>
-			<tr>
-				<td>배송비</td>
-				<td>3,000</td>
-			</tr>
-			<tr>
-				<td>옵션</td>
+				<c:forEach var="i" begin="1" end="9">
 				<td>
-					<select>
-						<option value="1">500ml X 20PET (+2700) 재고 : 999</option>
-						<option value="2">2L X 6PET (+0) 재고 : 999</option>
-					</select>
+					<table onclick="location.href='foodFrom'" border="1">
+						<tr>
+							<td>이미지</td>
+						</tr>
+						<tr>
+							<td>타이틀</td>
+						</tr>
+						<tr>
+							<td>설명</td>
+						</tr>
+						<tr>
+							<td>가격</td>
+						</tr>
+					</table>
 				</td>
-			</tr>
-			<tr>
-				<td>구매수량</td>
-				<td><input type="text" name="" maxlength="3"></td>
-			</tr>
-			<tr>
-				<td colspan="3" align="center">
-					<img src="content/image/food/A01_1.jpg" class="goodsInfo" />
-				</td>
+			<!-- 조건문 체크 -->
+				<c:if test="${i%3 == 0}">
+				<tr>
+					<td>&nbsp;</td>
+				</tr>
+				</c:if>
+						
+				
+				</c:forEach>
 			</tr>
 		</table>
 	</div>
