@@ -34,7 +34,7 @@ public class SearchingFoodServlet extends HttpServlet {
 		FoodService service = new FoodService();
 			
 		selectlist = service.searchFoodList("유기농");
-	
+		
 		JSONArray jsonList=new JSONArray();
 		//가상DB목록을 JSON배열목록에 출력하기 위한 임의의 JSON오브젝트
 		JSONObject jsontmp=null;
@@ -57,17 +57,17 @@ public class SearchingFoodServlet extends HttpServlet {
 //		jsonroot.put("result",jsonList);
 //		//성공여부
 //		jsonroot.put("success",true);
-		for(String select : selectlist) {
-			jsonList.add(select);
-		}
-		jsonroot.put("result",jsonList);
-		jsonroot.put("success",true);
-		
+//		for(String select : selectlist) {
+//			jsonList.add(select);
+//		}
+//		jsonroot.put("result",jsonList);
+//		jsonroot.put("success",true);
+//		
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter pw=response.getWriter();
-		pw.print(jsonroot);
-		pw.flush();
-		pw.close();
+		pw.print(selectlist);
+//		pw.flush();
+//		pw.close();
 
 	}
 
