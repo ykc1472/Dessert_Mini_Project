@@ -9,19 +9,23 @@
 			<form>
 				<table border="1">
 					<tr>
-						<td rowspan="6"><img src="content/image/food/A08_0.jpg" class="goods" /></td>
+						<td rowspan="6"><img src="content/image/food/${foodinfoList[0].fmainimage}.jpg" class="goods" /></td>
 						<td>제품명</td>
-						<td></td>
+						<td><b>[${foodinfoList[0].categoryname}]</b> ${foodinfoList[0].ftitle}</td>
 					<tr>
 					<tr>
 						<td>가격</td>
-						<td>9000</td>
+						<td><fmt:formatNumber value="${foodinfoList[0].fprice}" pattern="###,###,### 원" /></td>
 					</tr>
 					<tr>
 						<td>옵션</td>
 						<td>
 							<select id="options">
-								<option></option>
+								<c:forEach var="foodinfo" items="${foodinfoList}">
+									<option value="${foodinfo.foption}">[옵션 ${foodinfo.foption} : ${foodinfo.optionname} 
+									(<fmt:formatNumber value="${foodinfo.optionprice}" pattern="###,###,### 원" />)] /
+									<span id="stock"> 재고 : ${foodinfo.stock} 개 </span></option>
+								</c:forEach>
 							</select>
 						</td>
 					</tr>
@@ -35,9 +39,8 @@
 										<td><input type="text" name="amount"> +  - </td>
 									</tr>
 									<tr>
-										<td>가격  : </td>
+										<td>가격 </td>
 										<td></td>
-										
 									</tr>
 								</table>	
 							</div>

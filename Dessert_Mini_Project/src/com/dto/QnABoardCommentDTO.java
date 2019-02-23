@@ -24,6 +24,8 @@ public class QnABoardCommentDTO {
 		this.content = content;
 	}
 
+	
+	
 	public int getQna_num() {
 		return qna_num;
 	}

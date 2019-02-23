@@ -7,10 +7,43 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="FoodList" resultType="FoodInfoDTO" parameterType="int">
 		select fcode, ftitle, fprice, content, fmainimage from food
 		<where>
-			<if test="_parameter != null">
+			<if test="_parameter != 0">
 				fcategory = #{fcategory}
 			</if>
 		</where>
+	</select>
+	
+	<select id="foodTotalCount" resultType="int" parameterType="int">
+		select count(*) from food
+		<where>
+			<if test="_parameter != 0">
+				fcategory = #{fcategory}
+			</if>
+		</where>
+	</select>
+	
+	<select id="foodInfo" resultType="FoodInfoDTO" parameterType="string">
+		select categoryname, fcode, ftitle, fprice, fimage, fmainimage, foption, optionname, optionprice, stock from food
+		natural join foodoption
+		natural join category
+		where fcode = #{fcode}
+	</select>
+	
+	<select id="foodNewList" resultType="FoodInfoDTO">
+		select fcode, ftitle, fprice, fmainimage from food
+		where registration >= (select (sysdate - 15) from dual)
+		order by REGISTRATION desc
+	</select>
+	
+	<select id="foodNewTotal" resultType="int">
+		select count(*) from food
+		where registration >= (select (sysdate - 15) from dual)
+		order by REGISTRATION desc
+	</select>
+	
+	<select id="searchFoodList" resultType="String" parameterType="String">
+		select ftitle from food
+		where ftitle like '%'|| #{search} || '%'
 	</select>
 	
 </mapper>

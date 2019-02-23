@@ -3,7 +3,7 @@
 <div class="menus" align='center'>
 	<table>
 		<tr>
-			<td width="120" align='center'><a href="#" class="menu">New</a></td>
+			<td width="120" align='center'><a href="NewFoodList" class="menu">New</a></td>
 			<td width="120" align='center'><a href="#" class="menu">Best</a></td>
 			<td width="120" align='center'><a href="FoodList?category=1" class="menu">생수·음료·주스</a></td>
 			<td width="120" align='center'><a href="FoodList?category=2" class="menu">커피·차</a></td>

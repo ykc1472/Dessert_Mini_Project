@@ -15,6 +15,7 @@ public class MemberService {
 			success = dao.phoneNumberCheck(session, phoneNumber);
 			
 		} finally {
+			if(session != null)
 			session.close();
 		}
 	
@@ -29,6 +30,7 @@ public class MemberService {
 			success = dao.nickNameCheck(session, nickName);
 			
 		} finally {
+			if(session != null)
 			session.close();
 		}
 	
@@ -43,6 +45,7 @@ public class MemberService {
 			success = dao.userIDCheck(session, userid);
 			
 		} finally {
+			if(session != null)
 			session.close();
 		}
 	
@@ -61,6 +64,7 @@ public class MemberService {
 			session.rollback();
 			System.out.println(e.getMessage());
 		} finally {
+			if(session != null)
 			session.close();
 		}
 	
@@ -79,6 +83,7 @@ public class MemberService {
 			session.rollback();
 			System.out.println(e.getMessage());
 		} finally {
+			if(session != null)
 			session.close();
 		}
 	

@@ -8,23 +8,33 @@ public class PagingQnABoardDTO {
 	private int offset = 0;
 	private int limit = 10;
 	private int page = 1;
-	List<QnABoardDTO> qnaboardlist;
-	List<QnABoardCommentDTO> qnacommentlist;
+	private int totalpage;
+	private List<QnABoardDTO> qnaboardlist;
+	private List<QnABoardCommentDTO> qnacommentlist;
 
 	public PagingQnABoardDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public PagingQnABoardDTO(int total, int offset, int limit, int page, List<QnABoardDTO> qnaborderlist,
+	public PagingQnABoardDTO(int total, int offset, int limit, int page, int totalpage, List<QnABoardDTO> qnaboardlist,
 			List<QnABoardCommentDTO> qnacommentlist) {
 		super();
 		this.total = total;
 		this.offset = offset;
 		this.limit = limit;
 		this.page = page;
-		qnaboardlist = qnaborderlist;
-		qnacommentlist = qnacommentlist;
+		this.totalpage = totalpage;
+		this.qnaboardlist = qnaboardlist;
+		this.qnacommentlist = qnacommentlist;
+	}
+
+	public int getTotalpage() {
+		return totalpage;
+	}
+
+	public void setTotalpage(int totalpage) {
+		this.totalpage = totalpage;
 	}
 
 	public PagingQnABoardDTO(int page) {
@@ -38,6 +48,10 @@ public class PagingQnABoardDTO {
 
 	public void setTotal(int total) {
 		this.total = total;
+		this.totalpage = total / limit;
+		if (total % limit != 0) {
+			this.totalpage++;
+		}
 	}
 
 	public int getOffset() {
@@ -84,7 +98,8 @@ public class PagingQnABoardDTO {
 	@Override
 	public String toString() {
 		return "PagingQnABoardDTO [total=" + total + ", offset=" + offset + ", limit=" + limit + ", page=" + page
-				+ ", qnaboardlist=" + qnaboardlist + ", qnacommentlist=" + qnacommentlist + "]";
+				+ ", totalpage=" + totalpage + ", qnaboardlist=" + qnaboardlist + ", qnacommentlist=" + qnacommentlist
+				+ "]";
 	}
 
 }

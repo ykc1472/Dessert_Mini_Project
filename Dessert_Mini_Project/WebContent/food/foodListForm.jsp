@@ -7,9 +7,9 @@
 		<table border="1">
 			
 			<tr>
-				<c:forEach var="dto" items="${flist}" varStatus="i">
+				<c:forEach var="dto" items="${flist.foodlist}" varStatus="i">
 				<td>
-					<table onclick="location.href='foodFrom?fcode=${dto.fcode}'" border="1">
+					<table onclick="location.href='foodForm?fcode=${dto.fcode}'" border="1">
 						<tr>
 							<td><img src="content/image/food/${dto.fmainimage}.jpg"></td>
 						</tr>
@@ -26,7 +26,7 @@
 				</td>
 				<c:if test="${i.count % 3 == 0 }">
 					<tr>
-						<td>&nbsp;</td>
+						<td colspan="3">&nbsp;</td>
 					</tr>
 				</c:if>
 				

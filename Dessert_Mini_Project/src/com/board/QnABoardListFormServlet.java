@@ -23,7 +23,6 @@ public class QnABoardListFormServlet extends HttpServlet {
 		paging = service.selectAllQnABorder(paging);
 		
 		request.setAttribute("paging", paging);
-		System.out.println(paging);
 		RequestDispatcher dis = request.getRequestDispatcher("qna_boardListForm.jsp");
 		dis.forward(request, response);
 	}

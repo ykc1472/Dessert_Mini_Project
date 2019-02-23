@@ -11,34 +11,29 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.dto.FoodInfoDTO;
-import com.dto.PagingFoodListDTO;
 import com.service.FoodService;
-
-@WebServlet("/FoodList")
-public class FoodListServlet extends HttpServlet {
-
+@WebServlet("/foodForm")
+public class FoodFormServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		PagingFoodListDTO paging = new PagingFoodListDTO();
-		if (request.getParameter("page") != null) {
-			paging.setPage(Integer.parseInt(request.getParameter("page")));
-		}
-		
-		FoodService service = new FoodService();
+		String fcode = request.getParameter("fcode");
 		String nextPage = null;
-		
-		if(request.getParameter("category") != null) {
-			paging.setCategory(Integer.parseInt(request.getParameter("category")));
-			paging = service.foodList(paging);
-			request.setAttribute("flist", paging);
-			nextPage = "foodListForm.jsp";
-		} else{
+		FoodService service = new FoodService();
+		if(fcode != null) {
+			List<FoodInfoDTO> foodinfoList = service.foodInfo(fcode);
+			if (foodinfoList != null) {
+				request.setAttribute("foodinfoList", foodinfoList);
+				nextPage = "foodForm.jsp";
+			} else {
+				request.setAttribute("mesg", fcode + "에 해당하는 상품정보가 없습니다.");
+				nextPage = "main";
+			}
+		} else {
 			request.setAttribute("mesg", "잘못된 접근입니다.");
 			nextPage = "main";
 		}
 		
 		RequestDispatcher dis = request.getRequestDispatcher(nextPage);
 		dis.forward(request, response);
-		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

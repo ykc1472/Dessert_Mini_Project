@@ -6,20 +6,23 @@ public class FoodInfoDTO {
 	private String ftitle;
 	private int fprice;
 	private String fimage;
-	private String fcategory;
+	private int fcategory;
+	private String categoryname;
 	private String content;
 	private String fmainimage;
 	private int foption;
+	private int optionprice;
+	private int stock;
+	private String optionname;
 
 	public FoodInfoDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public FoodInfoDTO(int sales, String fcode, String ftitle, int fprice, String fimage, String fcategory,
-			String content, String fmainimage) {
+	public FoodInfoDTO(String fcode, String ftitle, int fprice, String fimage, int fcategory, String content,
+			String fmainimage, int foption, int optionprice, int stock, String optionname) {
 		super();
-		this.sales = sales;
 		this.fcode = fcode;
 		this.ftitle = ftitle;
 		this.fprice = fprice;
@@ -27,6 +30,42 @@ public class FoodInfoDTO {
 		this.fcategory = fcategory;
 		this.content = content;
 		this.fmainimage = fmainimage;
+		this.foption = foption;
+		this.optionprice = optionprice;
+		this.stock = stock;
+		this.optionname = optionname;
+	}
+
+	public String getCategoryname() {
+		return categoryname;
+	}
+
+	public void setFcategoryname(String categoryname) {
+		this.categoryname = categoryname;
+	}
+
+	public int getOptionprice() {
+		return optionprice;
+	}
+
+	public void setOptionprice(int optionprice) {
+		this.optionprice = optionprice;
+	}
+
+	public int getStock() {
+		return stock;
+	}
+
+	public void setStock(int stock) {
+		this.stock = stock;
+	}
+
+	public String getOptionname() {
+		return optionname;
+	}
+
+	public void setOptionname(String optionname) {
+		this.optionname = optionname;
 	}
 
 	public int getFoption() {
@@ -77,11 +116,11 @@ public class FoodInfoDTO {
 		this.fimage = fimage;
 	}
 
-	public String getFcategory() {
+	public int getFcategory() {
 		return fcategory;
 	}
 
-	public void setFcategory(String fcategory) {
+	public void setFcategory(int fcategory) {
 		this.fcategory = fcategory;
 	}
 
@@ -104,8 +143,10 @@ public class FoodInfoDTO {
 	@Override
 	public String toString() {
 		return "FoodInfoDTO [sales=" + sales + ", fcode=" + fcode + ", ftitle=" + ftitle + ", fprice=" + fprice
-				+ ", fimage=" + fimage + ", fcategory=" + fcategory + ", content=" + content + ", fmainimage="
-				+ fmainimage + "]";
+				+ ", fimage=" + fimage + ", fcategory=" + fcategory + ", fcategoryname=" + categoryname + ", content="
+				+ content + ", fmainimage=" + fmainimage + ", foption=" + foption + ", optionprice=" + optionprice
+				+ ", stock=" + stock + ", optionname=" + optionname + "]";
 	}
 
+	
 }

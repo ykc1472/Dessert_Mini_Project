@@ -15,6 +15,7 @@ public class QnABoardService {
 			paging = dao.selectAllQnABoard(session, paging);
 			
 		} finally {
+			if(session != null)
 			session.close();
 		}
 	
@@ -29,6 +30,7 @@ public class QnABoardService {
 			dto = dao.selectQnABoard(session, qna_num);
 			
 		} finally {
+			if(session != null)
 			session.close();
 		}
 	
