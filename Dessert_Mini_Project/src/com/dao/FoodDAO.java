@@ -45,4 +45,17 @@ public class FoodDAO {
 		// 검색어를 받아서 해당하는 결과가 들어간 Title을 모두 리턴해준다.
 		return session.selectList("FoodMapper.searchFoodList", search);
 	}
+	
+	
+	public PagingFoodListDTO searchingList(SqlSession session, PagingFoodListDTO paging) {
+		List<FoodInfoDTO> list = session.selectList("FoodMapper.searchingList", paging.getFtitle(), new RowBounds(paging.getOffset(), paging.getLimit()));
+		paging.setFoodlist(list);
+		paging.setTotal(searchingListTotal(session, paging.getFtitle()));
+		
+		return paging;
+	}
+	
+	public int searchingListTotal(SqlSession session, String ftitle) {
+		return session.selectOne("FoodMapper.searchingListTotal", ftitle);
+	}
 }

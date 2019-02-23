@@ -78,7 +78,10 @@
 		
 		</div>
 		<div>
-			<input type="text" name="search" id="search">
+			<form action="SearchingFoodList" method="get">
+				<input type="text" name="search" id="search"> <input type="submit" value="검색">
+			</form>
+			 
 		</div>
 	</div>
 	

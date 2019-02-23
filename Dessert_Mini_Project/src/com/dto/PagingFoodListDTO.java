@@ -5,6 +5,7 @@ import java.util.List;
 public class PagingFoodListDTO {
 
 	private String fcode;
+	private String ftitle;
 	private int category;
 	private int total;
 	private int offset = 0;
@@ -12,6 +13,22 @@ public class PagingFoodListDTO {
 	private int page = 1;
 	private int totalpage;
 	private List<FoodInfoDTO> foodlist;
+
+	public String getFtitle() {
+		return ftitle;
+	}
+
+	public void setFtitle(String ftitle) {
+		this.ftitle = ftitle;
+	}
+
+	public int getTotalpage() {
+		return totalpage;
+	}
+
+	public void setTotalpage(int totalpage) {
+		this.totalpage = totalpage;
+	}
 
 	public PagingFoodListDTO() {
 		super();
@@ -91,9 +108,9 @@ public class PagingFoodListDTO {
 
 	@Override
 	public String toString() {
-		return "PagingFoodListDTO [fcode=" + fcode + ", category=" + category + ", total=" + total + ", offset="
-				+ offset + ", limit=" + limit + ", page=" + page + ", totalpage=" + totalpage + ", foodlist=" + foodlist
-				+ "]";
+		return "PagingFoodListDTO [fcode=" + fcode + ", ftitle=" + ftitle + ", category=" + category + ", total="
+				+ total + ", offset=" + offset + ", limit=" + limit + ", page=" + page + ", totalpage=" + totalpage
+				+ ", foodlist=" + foodlist + "]";
 	}
 
 }

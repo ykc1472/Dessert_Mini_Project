@@ -69,4 +69,18 @@ public class FoodService {
 		return list;
 	}
 	
+	public PagingFoodListDTO searchingList(PagingFoodListDTO paging) {
+		FoodDAO dao = new FoodDAO();
+		SqlSession session = MySqlSessionFactory.getSession();
+		try {
+			paging = dao.searchingList(session, paging);
+		} finally {
+			if(session != null)
+				session.close();
+		}
+		
+		return paging;
+		
+	}
+	
 }
