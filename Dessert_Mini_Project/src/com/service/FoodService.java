@@ -55,10 +55,10 @@ public class FoodService {
 		return paging;
 	}
 	
-	public List<String> searchFoodList(String search){
+	public List<HashMap<String, String>> searchFoodList(String search){
 		FoodDAO dao = new FoodDAO();
 		SqlSession session = MySqlSessionFactory.getSession();
-		List<String> list = null;
+		List<HashMap<String, String>> list = null;
 		try {
 			list = dao.searchFoodList(session, search);
 		} finally {
@@ -67,6 +67,20 @@ public class FoodService {
 		}
 		
 		return list;
+	}
+	
+	public PagingFoodListDTO searchingList(PagingFoodListDTO paging) {
+		FoodDAO dao = new FoodDAO();
+		SqlSession session = MySqlSessionFactory.getSession();
+		try {
+			paging = dao.searchingList(session, paging);
+		} finally {
+			if(session != null)
+				session.close();
+		}
+		
+		return paging;
+		
 	}
 	
 }

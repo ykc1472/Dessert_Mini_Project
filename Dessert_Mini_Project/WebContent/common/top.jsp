@@ -31,10 +31,10 @@
 						//서버에서 json 데이터 response 후 목록에 뿌려주기 위함
                         response(
                             $.map(data, function(item) {
-                            	console.log(item.data)
+                            	console.log(item)
                                 return {
-                                    label: item,
-                                    value: item
+                                    label: item.FTITLE,
+                                    value: item.FTITLE
                                 }
                             })
                         );
@@ -78,7 +78,10 @@
 		
 		</div>
 		<div>
-			<input type="text" name="search" id="search">
+			<form action="SearchingFoodList" method="get">
+				<input type="text" name="search" id="search"> <input type="submit" value="검색">
+			</form>
+			 
 		</div>
 	</div>
 	
