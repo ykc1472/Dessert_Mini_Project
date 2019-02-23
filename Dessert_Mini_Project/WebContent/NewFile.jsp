@@ -13,7 +13,7 @@
 <script type="text/javascript">
 $(function() {
 
-    var availableCity = ["서울","부산","대구","광주","울산"];
+    var availableCity = ["서울","부산","대구","광주","울산", "울진"];
 
     $("#city").autocomplete({
 

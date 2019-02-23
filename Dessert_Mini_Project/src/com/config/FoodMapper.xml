@@ -41,7 +41,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		order by REGISTRATION desc
 	</select>
 	
-	<select id="searchFoodList" resultType="String" parameterType="String">
+	<select id="searchFoodList" resultType="hashmap" parameterType="String">
 		select ftitle from food
 		where ftitle like '%'|| #{search} || '%'
 	</select>

@@ -31,10 +31,10 @@
 						//서버에서 json 데이터 response 후 목록에 뿌려주기 위함
                         response(
                             $.map(data, function(item) {
-                            	console.log(item.data)
+                            	console.log(item)
                                 return {
-                                    label: item,
-                                    value: item
+                                    label: item.FTITLE,
+                                    value: item.FTITLE
                                 }
                             })
                         );

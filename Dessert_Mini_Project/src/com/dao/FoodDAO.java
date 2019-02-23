@@ -41,7 +41,7 @@ public class FoodDAO {
 		return session.selectOne("FoodMapper.foodNewTotal");
 	}
 	
-	public List<String> searchFoodList(SqlSession session, String search){
+	public List<HashMap<String, String>> searchFoodList(SqlSession session, String search){
 		// 검색어를 받아서 해당하는 결과가 들어간 Title을 모두 리턴해준다.
 		return session.selectList("FoodMapper.searchFoodList", search);
 	}
