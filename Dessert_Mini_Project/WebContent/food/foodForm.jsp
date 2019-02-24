@@ -10,18 +10,20 @@
 		$("#options").on("change", function(event){
 			if($(this).val() != '#'){
 				var select = Number.parseInt($(this).val());
-				var tegs = $("#result").html();
 				if($("#"+select).attr("id") != select){
 					<c:forEach var="foodinfo" items="${foodinfoList}">
 						if(${foodinfo.foption} == select){
-							// tegs = $("#result").html();
-							tegs += "<table border='1' id='${foodinfo.foption}'><tr><td colspan='2'>옵션 ${foodinfo.foption}: ${foodinfo.optionname}(+<fmt:formatNumber value='${foodinfo.optionprice}' pattern='###,###,### 원' />)"
-						    tegs += "</td><td rowspan='3'><input type='button' value='옵션삭제' data-delete='${foodinoList.foption}'></td>";
+							var tegs = "<table border='1' id='${foodinfo.foption}'><tr><td colspan='2'>옵션 ${foodinfo.foption}: ${foodinfo.optionname}(+<fmt:formatNumber value='${foodinfo.optionprice}' pattern='###,###,### 원' />)";
+						    tegs += "</td><td rowspan='3'><input type='button' value='옵션삭제' data-delete='${foodinfo.foption}'></td>";
 							tegs += "</tr><tr><td>수량<input type='text' name='amount' value='1' data-amount='${foodinfo.foption}'> </td><td><img src='content/image/order/down.PNG' data-down='${foodinfo.foption}'>&nbsp;";
-							tegs += "<img src='content/image/order/up.PNG' data-up='${foodinfo.foption}'></td></tr><tr><td><span style='font-size: 14px; color: gray;'><fmt:formatNumber value='${foodinfo.fprice}' pattern='###,###,### 원' /> x <span data-amount='${foodinfo.foption}'>1</span>개</span></td><td>";
-							tegs += "<span style='font-size: 20px; color: red; font-weight: bold;'><fmt:formatNumber value='${foodinfo.fprice+foodinfo.optionprice}' pattern='###,###,### 원' /></span>"
-							tegs += "<input type='hidden' name='foption' value='${foodinfo.foption}' data-foption='${foodinfo.foption}'><input type='hidden' name='fcode' value='${foodinfo.fcode}' data-fcode='${foodinfo.foption}'></td></tr></table><br>"
-							$("#result").html(tegs);
+							tegs += "<img src='content/image/order/up.PNG' data-up='${foodinfo.foption}'></td></tr><tr><td><span style='font-size: 14px; color: gray;'><fmt:formatNumber value='${foodinfo.fprice}' pattern='###,###,### 원' /> x <span data-reamountr='${foodinfo.foption}'>1</span>개</span></td><td>";
+							tegs += "<span style='font-size: 20px; color: red; font-weight: bold;' data-reprice='${foodinfo.foption}'><fmt:formatNumber value='${foodinfo.fprice+foodinfo.optionprice}' pattern='###,###,###' /> 원</span>";
+							tegs += "<input type='hidden' name='foption' value='${foodinfo.foption}' data-foption='${foodinfo.foption}'><input type='hidden' name='fcode' value='${foodinfo.fcode}' data-fcode='${foodinfo.foption}'>";
+							tegs +=	"<input type='hidden' value='${foodinfo.fprice+foodinfo.optionprice}' id='opprice'></td></tr></table>";
+							// var tegs = $("#result").html(); 후에 기존의 태그 위에 +=을 이용해서 넣으면 
+							// $("#result").html(tegs); // 태그는 정상적으로 복사해오나, input 태그 안의 값은 가져오지 못해서 초기화 된다.
+							// 따라서 append를 이용해 기존의 태그에다가 새로운 태그를 추가하는 방법을 사용한다.
+							$("#result").append(tegs);
 						}
 					</c:forEach>
 				} else{
@@ -41,6 +43,7 @@
 			var amount = Number.parseInt($("[data-amount="+$(this).attr("data-down")+"]").val());
 			if (amount - 1 != 0){
 				$("[data-amount="+$(this).attr("data-down")+"]").val(--amount);
+				check($("[data-amount="+$(this).attr("data-down")+"]"));
 			}
 		})
 		
@@ -65,6 +68,12 @@
 						if (Number.parseInt($("[data-amount='"+$(select).attr("data-amount")+"']").val()) > stock){
 							$("[data-amount='"+$(select).attr("data-amount")+"']").val(stock);
 							alert("재고량 이상을 주문할 수 없습니다. 재고 : " + stock);
+						} else{
+							var amount = Number.parseInt($("[data-amount='"+$(select).attr("data-amount")+"']").val());
+							$("[data-reamountr='"+$(select).attr("data-amount")+"']").text(amount);
+							var totalPrice = Number.parseInt($("#opprice").val()) * amount;
+							$("[data-reprice='"+$(select).attr("data-amount")+"']").text(totalPrice.toLocaleString() + " 원");
+							// totalPrice.toLocaleString() -> 숫자에 3자리마다 ',' 를 넣어주는 함수이다.
 						}
 					}
 				},
@@ -73,6 +82,11 @@
 				}
 			})
 		}
+		
+		$("body").on("click","[data-delete]", function(event){
+			// 옵션 삭제
+			$("#"+$(this).attr("data-delete")).remove();
+		})
 	})
 	
 </script>
