@@ -55,4 +55,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select count(*) from food
 		where ftitle like '%'|| #{search} || '%'
 	</select>
+	
+	<select id="checkStock" resultType="int" parameterType="hashmap">
+		select stock from foodoption
+		where fcode = #{fcode}
+		and foption = #{foption}
+	</select>
 </mapper>

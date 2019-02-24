@@ -83,4 +83,21 @@ public class FoodService {
 		
 	}
 	
+	public int checkStock(String fcode, int foption) {
+		FoodDAO dao = new FoodDAO();
+		int stock = 0;
+		SqlSession session = MySqlSessionFactory.getSession();
+		try {
+			stock = dao.checkStock(session, fcode, foption);
+		} finally {
+			if(session != null)
+				session.close();
+		}
+		
+		return stock;
+		
+	}
+	
+	
+	
 }

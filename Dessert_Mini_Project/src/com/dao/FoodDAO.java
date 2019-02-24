@@ -58,4 +58,12 @@ public class FoodDAO {
 	public int searchingListTotal(SqlSession session, String ftitle) {
 		return session.selectOne("FoodMapper.searchingListTotal", ftitle);
 	}
+
+	public int checkStock(SqlSession session, String fcode, int foption) {
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("fcode", fcode);
+		map.put("foption", foption);
+		
+		return session.selectOne("FoodMapper.checkStock", map);
+	}
 }
