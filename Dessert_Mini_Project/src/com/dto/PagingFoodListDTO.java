@@ -9,10 +9,19 @@ public class PagingFoodListDTO {
 	private int category;
 	private int total;
 	private int offset = 0;
-	private int limit = 9;
+	private int limit = 6;
 	private int page = 1;
 	private int totalpage;
+	private int startpage = 1;
 	private List<FoodInfoDTO> foodlist;
+
+	public int getStartpage() {
+		return startpage;
+	}
+
+	public void setStartpage(int startpage) {
+		this.startpage = startpage;
+	}
 
 	public String getFtitle() {
 		return ftitle;

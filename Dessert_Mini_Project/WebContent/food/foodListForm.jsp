@@ -32,5 +32,20 @@
 				
 				</c:forEach>
 			</tr>
+			<tr>
+				
+				<td colspan="3" align="center">
+					<c:forEach var="i" end="${flist.totalpage}" begin="1">
+						<c:choose>
+							<c:when test="${i eq flist.page}">
+								<span style="color: red">${i}</span>&nbsp;
+							</c:when>
+							<c:otherwise>
+								<a href="FoodList?page=${i}&category=${flist.category}">${i}</a>&nbsp;
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+				</td>
+			</tr>
 		</table>
 	</div>

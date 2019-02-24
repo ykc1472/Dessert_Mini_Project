@@ -27,7 +27,6 @@ public class SearchingFoodListServlet extends HttpServlet {
 			paging = service.searchingList(paging);
 			nextPage = "foodListForm.jsp";
 			request.setAttribute("flist", paging);
-			
 		}else {
 			request.setAttribute("mesg", "잘못된 접근입니다.");
 			nextPage = "main";
