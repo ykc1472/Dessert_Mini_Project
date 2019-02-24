@@ -16,7 +16,7 @@ public class PasswordRegExServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String password = request.getParameter("password");
 		int mesg = 0;
-		// 비밀번호 유효성 검사식1 : 숫자, 특수문자가 포함되어야 한다.
+		// 비밀번호 유효성 검사식1 : 숫자, 특수문자가 포함되어야 한다. (정규표현식)
         String regExp_symbol = "([0-9].*[!,@,#,^,&,*,(,)])|([!,@,#,^,&,*,(,)].*[0-9])";
         // 비밀번호 유효성 검사식2 : 영문자 대소문자가 적어도 하나씩은 포함되어야 한다.
         String regExp_alpha = "([a-z].*[A-Z])|([A-Z].*[a-z])";

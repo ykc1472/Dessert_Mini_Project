@@ -2,8 +2,9 @@
 	pageEncoding="UTF-8"%>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script type="text/javascript" src="content/js/memberform.js"></script>
+<link rel="stylesheet" href="content/css/memberForm.css">
 <script type="text/javascript">
-	
+
 </script>
 <div align="center">
 	<form action="UserAdd" method="post">
@@ -16,8 +17,8 @@
 			</tr>
 			<tr>
 				<th>비밀번호</th>
-				<td colspan="2"><input type="password" name="userpw" maxlength="20"><br>
-					<span id="pw" style="font-size: 9px; color: red;">&nbsp;</span></td>
+				<td colspan="2"><input type="password" name="userpw" maxlength="20" id="password"><br>
+					<span id="password_grade"><span id="pw" class="strength_0" id="password_grade">비밀번호를 입력하세요.</span></span></td>
 			</tr>
 			<tr>
 				<th>비밀번호 확인</th>

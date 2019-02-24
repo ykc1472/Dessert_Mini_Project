@@ -35,39 +35,77 @@ $(document).ready(function(){
 		// pw 일치 확인 End
 	})
 
-	$("[name='userpw']").on("change", function(event){
+	$("[name='userpw']").on("keyup", function(event){
 		// PW 수정시에 PW 확인 초기화 Start
-		$("[name='re_userpw']").val("");
-		$("#re_pw").html("&nbsp;");
-		pw_check = false;
+//		$("[name='re_userpw']").val("");
+//		$("#re_pw").html("&nbsp;");
+//		pw_check = false;
+//		
+//		$.ajax({
+//			type : "POST",
+//			url : "PasswordRegEx",
+//			dataType : "text",
+//			data : {
+//				password : $(this).val()
+//			},
+//			success : function(Data, status, xhr) {
+//				if(Data == 1){
+//					$("#pw").html("비밀번호에 숫자, 특수문자가 포함되어야 합니다.");
+//					$("#re_userpw").attr("readonly", "true");
+//				}else if(Data == 2){
+//					$("#pw").html("비밀번호에 영문자 대소문자가 적어도 하나씩은 포함되어야 합니다.");
+//					$("#re_userpw").attr("readonly", true);
+//				}else{
+//					$("#pw").html("&nbsp;");
+//					$("#re_userpw").attr("readonly", false);
+//				}
+//			},
+//			error : function(xhr, status, error) {
+//				console.log("error");
+//			}
+//		})
+//		
 		
-		$.ajax({
-			type : "POST",
-			url : "PasswordRegEx",
-			dataType : "text",
-			data : {
-				password : $(this).val()
-			},
-			success : function(Data, status, xhr) {
-				if(Data == 1){
-					$("#pw").html("비밀번호에 숫자, 특수문자가 포함되어야 합니다.");
-					$("#re_userpw").attr("readonly", "true");
-				}else if(Data == 2){
-					$("#pw").html("비밀번호에 영문자 대소문자가 적어도 하나씩은 포함되어야 합니다.");
-					$("#re_userpw").attr("readonly", true);
-				}else{
-					$("#pw").html("&nbsp;");
-					$("#re_userpw").attr("readonly", false);
-				}
-			},
-			error : function(xhr, status, error) {
-				console.log("error");
-			}
-		})
+		var strength_grade = new Array();
+		strength_grade[0] = '매우 안전하지 않은 비밀번호';
+		strength_grade[1] = '안전하지 않은 비밀번호';
+		strength_grade[2] = '권장하지 않은 비밀번호';
+		strength_grade[3] = '안정적인 비밀번호';
+		strength_grade[4] = '안전한 비밀번호';
+		strength_grade[5] = '매우 강력한 비밀번호';
+
+		var strength = passwordGrade($(this).val());
+
+		$("#pw").text(strength_grade[strength]);
+		$("#password_grade").attr("class", "strength_" + strength);
 		
 		// PW 수정시에 PW 확인 초기화 End
 	})
-	
+	function passwordGrade(password) {
+		var score = 0;
+
+		// Length at least 8 chars long
+		if (password.length >= 8)
+			score++;
+
+		// both lower and uppercase chars
+		if (password.match(/[a-z]/) && password.match(/[A-Z]/))
+			score++;
+
+		// at least one num char
+		if (password.match(/[0-9]+/))
+			score++;
+
+		// at least one special char
+		if (password.match(/.[!,@,#,$,%,^,&,*,?,_,~,-,(,)-]/))
+			score++;
+
+		// Length at least 12 chars long
+		if (password.length >= 12)
+			score++;
+
+		return score;
+	}
 	$("#phoneNumber").on("change", function(event){
 		// 휴대폰 번호 가입 중복 체크 Start
 		if($(this).val() == ''){

@@ -13,17 +13,18 @@
 				if($("#"+select).attr("id") != select){
 					<c:forEach var="foodinfo" items="${foodinfoList}">
 						if(${foodinfo.foption} == select){
-							var tegs = "<table border='1' id='${foodinfo.foption}'><tr><td colspan='2'>옵션 ${foodinfo.foption}: ${foodinfo.optionname}(+<fmt:formatNumber value='${foodinfo.optionprice}' pattern='###,###,### 원' />)";
+							var tegs = "<table id='${foodinfo.foption}'><tr><td colspan='2'>옵션 ${foodinfo.foption}: ${foodinfo.optionname}(+<fmt:formatNumber value='${foodinfo.optionprice}' pattern='###,###,### 원' />)";
 						    tegs += "</td><td rowspan='3'><input type='button' value='옵션삭제' data-delete='${foodinfo.foption}'></td>";
 							tegs += "</tr><tr><td>수량<input type='text' name='amount' value='1' data-amount='${foodinfo.foption}'> </td><td><img src='content/image/order/down.PNG' data-down='${foodinfo.foption}'>&nbsp;";
 							tegs += "<img src='content/image/order/up.PNG' data-up='${foodinfo.foption}'></td></tr><tr><td><span style='font-size: 14px; color: gray;'><fmt:formatNumber value='${foodinfo.fprice}' pattern='###,###,### 원' /> x <span data-reamountr='${foodinfo.foption}'>1</span>개</span></td><td>";
 							tegs += "<span style='font-size: 20px; color: red; font-weight: bold;' data-reprice='${foodinfo.foption}'><fmt:formatNumber value='${foodinfo.fprice+foodinfo.optionprice}' pattern='###,###,###' /> 원</span>";
 							tegs += "<input type='hidden' name='foption' value='${foodinfo.foption}' data-foption='${foodinfo.foption}'><input type='hidden' name='fcode' value='${foodinfo.fcode}' data-fcode='${foodinfo.foption}'>";
-							tegs +=	"<input type='hidden' value='${foodinfo.fprice+foodinfo.optionprice}' id='opprice'></td></tr></table>";
+							tegs +=	"<input type='hidden' value='${foodinfo.fprice+foodinfo.optionprice}' id='opprice' data-price='${foodinfo.foption}'></td></tr></table>";
 							// var tegs = $("#result").html(); 후에 기존의 태그 위에 +=을 이용해서 넣으면 
 							// $("#result").html(tegs); // 태그는 정상적으로 복사해오나, input 태그 안의 값은 가져오지 못해서 초기화 된다.
 							// 따라서 append를 이용해 기존의 태그에다가 새로운 태그를 추가하는 방법을 사용한다.
 							$("#result").append(tegs);
+							priceTotal();
 						}
 					</c:forEach>
 				} else{
@@ -73,6 +74,7 @@
 							$("[data-reamountr='"+$(select).attr("data-amount")+"']").text(amount);
 							var totalPrice = Number.parseInt($("#opprice").val()) * amount;
 							$("[data-reprice='"+$(select).attr("data-amount")+"']").text(totalPrice.toLocaleString() + " 원");
+							priceTotal();
 							// totalPrice.toLocaleString() -> 숫자에 3자리마다 ',' 를 넣어주는 함수이다.
 						}
 					}
@@ -86,7 +88,29 @@
 		$("body").on("click","[data-delete]", function(event){
 			// 옵션 삭제
 			$("#"+$(this).attr("data-delete")).remove();
+			priceTotal();
+			
 		})
+		function priceTotal(){
+			var totalPrice = 0;
+			var text = "";
+			var amounts = new Array();
+			var price = new Array();
+			$("[data-amount]").each(function(idx, ele){
+				
+				amounts[Number.parseInt(idx)] = Number.parseInt($(ele).val());
+			})
+			$("[data-price]").each(function(idx, ele){
+				
+				price[Number.parseInt(idx)] = Number.parseInt($(ele).val());
+			})
+			for(var i = 0 ; i < amounts.length ; i ++){
+				totalPrice += (amounts[i] * price[i]);
+			}
+			$("#priceTotal").text(totalPrice.toLocaleString()+ "원");
+			
+	
+		}
 	})
 	
 </script>
@@ -97,16 +121,16 @@
 			<form>
 				<table border="1">
 					<tr>
-						<td rowspan="6"><img src="content/image/food/${foodinfoList[0].fmainimage}.jpg" class="goods" /></td>
-						<td>제품명</td>
+						<td rowspan="7"><img src="content/image/food/${foodinfoList[0].fmainimage}.jpg" class="goods" /></td>
+						<th>제품명</th>
 						<td><b>[${foodinfoList[0].categoryname}]</b> ${foodinfoList[0].ftitle}</td>
 					<tr>
 					<tr>
-						<td>가격</td>
+						<th>가격</th>
 						<td><fmt:formatNumber value="${foodinfoList[0].fprice}" pattern="###,###,### 원" /></td>
 					</tr>
 					<tr>
-						<td>옵션</td>
+						<th>옵션</th>
 						<td>
 							<select id="options">
 								<option value="#">옵션을 선택하세요.</option>
@@ -119,13 +143,17 @@
 						</td>
 					</tr>
 					<tr>
-						<td>정보</td>
+						<th>정보</th>
 						<td>
 							<!-- 여기에 옵션 목록 추가 -->
 							<div id="result">
 							</div>
 							<!-- 여기까지  -->
 						</td>
+					</tr>
+					<tr>
+						<th>Total</th>
+						<td align="right"><b><span id="priceTotal" style="color: blue; font-size: 20px"></span></b></td>
 					</tr>
 					<tr>
 						<td colspan="2">

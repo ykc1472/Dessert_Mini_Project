@@ -1,0 +1,10 @@
+@charset "UTF-8";
+#password_bar #negative_bar {background: #ff0000;}
+
+#password_grade #pw {text-align: right;}
+#password_grade.strength_0 #pw {color: #ff0000;}
+#password_grade.strength_1 #pw {color: #ff9900;}
+#password_grade.strength_2 #pw {color: #66ff33;}
+#password_grade.strength_3 #pw {color: #339933;}
+#password_grade.strength_4 #pw {color: #0000ff;}
+#password_grade.strength_5 #pw {color: #6600cc;}
