@@ -37,15 +37,20 @@ public class OrderService {
 		return dto;
 	}
 	
-	public int orderDone(List<OrderDTO> orderList) {
-		MemberDTO dto = null;
+	public List<OrderDTO> orderDone(List<OrderDTO> orderList) {
 		OrderDAO dao = new OrderDAO();
-		int success = 0;
+		int insert_success = 0;
+		int update_success = 0;
 		SqlSession session = MySqlSessionFactory.getSession();
 		try {
-			success = dao.orderDone(session, orderList);
-			if(success == orderList.size()) {
+			System.out.println(1);
+			insert_success = dao.orderDone(session, orderList);
+			System.out.println(2);
+			update_success = dao.updateOptionStock(session, orderList);
+			System.out.println(3);
+			if(insert_success == orderList.size() && insert_success == update_success) {
 				session.commit();
+				orderList = dao.selectOrderAllDone(session, orderList);
 			}else {
 				throw new Exception("모든 상품이 Insert되지 못함");
 			}
@@ -57,6 +62,6 @@ public class OrderService {
 				session.close();
 		}
 		
-		return success;
+		return orderList;
 	}
 }

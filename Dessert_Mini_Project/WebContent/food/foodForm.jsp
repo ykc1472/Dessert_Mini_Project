@@ -16,7 +16,7 @@
 							var tegs = "<table id='${foodinfo.foption}'><tr><td colspan='2'>옵션 ${foodinfo.foption}: ${foodinfo.optionname}(+<fmt:formatNumber value='${foodinfo.optionprice}' pattern='###,###,### 원' />)";
 						    tegs += "</td><td rowspan='3'><input type='button' value='옵션삭제' data-delete='${foodinfo.foption}'></td>";
 							tegs += "</tr><tr><td>수량<input type='text' name='amount' value='1' data-amount='${foodinfo.foption}'> </td><td><img src='content/image/order/minus.PNG' data-down='${foodinfo.foption}'>&nbsp;";
-							tegs += "<img src='content/image/order/plus.PNG' data-up='${foodinfo.foption}'></td></tr><tr><td><span style='font-size: 14px; color: gray;'><fmt:formatNumber value='${foodinfo.fprice}' pattern='###,###,### 원' /> x <span data-reamountr='${foodinfo.foption}'>1</span>개</span></td><td>";
+							tegs += "<img src='content/image/order/plus.PNG' data-up='${foodinfo.foption}'></td></tr><tr><td><span style='font-size: 14px; color: gray;'><fmt:formatNumber value='${foodinfo.fprice + foodinfo.optionprice}' pattern='###,###,### 원' /> x <span data-reamountr='${foodinfo.foption}'>1</span>개</span></td><td>";
 							tegs += "<span style='font-size: 20px; color: red; font-weight: bold;' data-reprice='${foodinfo.foption}'><fmt:formatNumber value='${foodinfo.fprice+foodinfo.optionprice}' pattern='###,###,###' /> 원</span>";
 							tegs += "<input type='hidden' name='foption' value='${foodinfo.foption}' data-foption='${foodinfo.foption}'><input type='hidden' name='fcode' value='${foodinfo.fcode}' data-fcode='${foodinfo.foption}'>";
 							tegs +=	"<input type='hidden' value='${foodinfo.fprice+foodinfo.optionprice}' id='opprice' data-price='${foodinfo.foption}'></td></tr></table>";
@@ -73,7 +73,7 @@
 						} else{
 							var amount = Number.parseInt($("[data-amount='"+$(select).attr("data-amount")+"']").val());
 							$("[data-reamountr='"+$(select).attr("data-amount")+"']").text(amount);
-							var totalPrice = Number.parseInt($("#opprice").val()) * amount;
+							var totalPrice = Number.parseInt($("[data-price='"+$(select).attr("data-amount")+"']").val()) * amount;
 							$("[data-reprice='"+$(select).attr("data-amount")+"']").text(totalPrice.toLocaleString() + " 원");
 							priceTotal();
 							// totalPrice.toLocaleString() -> 숫자에 3자리마다 ',' 를 넣어주는 함수이다.
@@ -145,7 +145,7 @@
 								<option value="#">옵션을 선택하세요.</option>
 								<c:forEach var="foodinfo" items="${foodinfoList}">
 									<option value="${foodinfo.foption}">[옵션 ${foodinfo.foption} : ${foodinfo.optionname} 
-									(+<fmt:formatNumber value="${foodinfo.optionprice}" pattern="###,###,### 원" />)] /
+									(<fmt:formatNumber value="${foodinfo.optionprice}" pattern="###,###,### 원" />)] /
 									재고 : ${foodinfo.stock} 개</option>
 								</c:forEach>
 							</select>

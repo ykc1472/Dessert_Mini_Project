@@ -4,13 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-
-${orderList }
-<br>
-${orderCount}
-<br>
-${orderUserInfo }<br>
-${orderList[0].payMethod}
+<div align="center">
 <table width="70%" cellspacing="0" cellpadding="0">
 	<tr>
 		<td height="30">
@@ -34,7 +28,7 @@ ${orderList[0].payMethod}
 
 	<tr>
 		<td class="td_default" align="center"><span style="color:blue;"><b>${orderUserInfo.userid } (${orderUserInfo.username})</b></span> 님의
-			<span style="color:red;"><b>${orderCount}개 </b>의 제품이 안전하게 처리되었습니다.</td>
+			<span style="color:red;"><b>${orderCount}개 </b></span>의 제품이 안전하게 처리되었습니다.</td>
 	</tr>
 
 	<tr>
@@ -56,18 +50,18 @@ ${orderList[0].payMethod}
 				bordercolor="#CCCCCC">
 				<tr>
 					<td class="td_default" width="150" height="35"> 받으시는 분</td>
-					<td class="td_default" height="35">${orderUserInfo.username}고객님</td>
+					<td class="td_default" height="35"><b>${orderUserInfo.username}</b> 고객님</td>
 				</tr>
 				<tr>
 					<td class="td_default" height="35"> 주소</td>
-					<td class="td_default" height="35"> ${orderList[0].addr_post}<br>
-						${orderList[0].addr_f }&nbsp;${orderList[0].addr_l }
+					<td class="td_default" height="35"> 우편번호 (${orderList[0].addr_post})<br>
+					${orderList[0].addr_f } &nbsp; ${orderList[0].addr_l }
 					</td>
 				</tr>
 				
 				<tr>
 					<td class="td_default" height="35"> 휴대전화</td>
-					<td class="td_default" height="35"> ${orderList[0].phone}</td>
+					<td class="td_default" height="35"> ${orderUserInfo.phone}</td>
 				</tr>
 			</table>
 	</tr>
@@ -82,8 +76,8 @@ ${orderList[0].payMethod}
 			<table width="100%" border="1" style="border-collapse: collapse"
 				bordercolor="#CCCCCC">
 				<tr>
-					<td class="td_default" width="50" height="35" align="center"><strong>주문번호</strong>
-					<td width="250" class="td_default" height="35" align="center" colspan="2"><strong>상품명</strong></td>
+					<td class="td_default" width="100" height="35" align="center"><strong>주문번호</strong>
+					<td width="200" class="td_default" height="35" align="center" colspan="2"><strong>상품명</strong></td>
 					<td width="100" class="td_default" height="35" align="center"><strong>판매가</strong></td>
 					<td class="td_default" width="50" height="35" align="center"><strong>수량</strong></td>
 					<td class="td_default" width="100" height="35" align="center"><strong>합계</strong></td>
@@ -94,17 +88,22 @@ ${orderList[0].payMethod}
 				
 				
 				<tr>
-					<td height="35" class="td_default">
-						<span class="a_default">1</span>
+					<td height="35" class="td_default" align="center">
+						<span class="a_default">${order.ordernum}</span>
+					</td>
+					<td height="35" width="50" class="td_default" align="center">
+						<img src="content/image/food/${order.fmainimage}.jpg" border="0" height="60">
 					</td>
 					<td height="35" class="td_default">
-						<span class="a_default">상품명</span>
+						<span class="a_default">${order.ftitle}</span><br>
+						${order.content}<br>
+						<font size="2" color="#665b5f">[옵션  ${order.foption}: ${order.optionname}]</font>
 					</td>
 					<td height="35" class="td_default" align="center">
-						<span  id = "price1"></span>원
+						<span  id = "price1"><fmt:formatNumber value='${order.fprice + order.optionprice}' pattern='###,###,###' /></span>원
 					</td>
 					<td height="35" class="td_default" align="center">
-						<span id = "num1">${order.amount }</span>개
+						<span id = "num1">${order.amount}</span>개
 					</td>
 					<td height="35" class="td_default" align="center">
 						<span><fmt:formatNumber value='${(order.fprice + order.optionprice) * order.amount}' pattern='###,###,###' /> 원</span>
@@ -182,3 +181,4 @@ ${orderList[0].payMethod}
 	</tr>
 
 </table>
+</div>

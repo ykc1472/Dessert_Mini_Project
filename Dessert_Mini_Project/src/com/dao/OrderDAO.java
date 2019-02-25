@@ -34,7 +34,26 @@ public class OrderDAO {
 	
 	public int orderDone(SqlSession session, List<OrderDTO> orderList) {
 		
-		int success = session.insert("OrderMapper.orderDone", orderList);
+		int success = 0;
+		for(OrderDTO order : orderList) {
+			success += session.insert("OrderMapper.orderAllDone", order);
+		}
+		
 		return success;
 	}
+	
+	public List<OrderDTO> selectOrderAllDone(SqlSession session, List<OrderDTO> orderList){
+		
+		return session.selectList("OrderMapper.selectOrderAllDone", orderList);
+	}
+	
+	public int updateOptionStock(SqlSession session, List<OrderDTO> orderList){
+		int success = 0;
+		for(OrderDTO order : orderList) {
+			success += session.update("OrderMapper.selectOrderAllDone", order);
+		}
+		return success;
+	}
+	
+	
 }
