@@ -30,4 +30,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		and userpw = #{userpw}
 	</select>
 	
+	<select id="orderUserInfo" parameterType="MemberDTO" resultType="MemberDTO">
+		select userid, username, phone, email ,address_post, address_f, address_l  from member
+		where userid = #{userid}
+	</select>
+	
 </mapper>

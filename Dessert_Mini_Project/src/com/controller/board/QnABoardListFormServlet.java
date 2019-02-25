@@ -1,4 +1,4 @@
-package com.board;
+package com.controller.board;
 
 import java.io.IOException;
 
@@ -9,23 +9,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.dto.QnABoardDTO;
+import com.dto.PagingQnABoardDTO;
 import com.service.QnABoardService;
 
-@WebServlet("/QnABoardForm")
-public class QnABoardFormServlet extends HttpServlet {
+@WebServlet("/QnABoardListForm")
+public class QnABoardListFormServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		if(request.getParameter("pick") != null) {
-			int pick = Integer.parseInt(request.getParameter("pick"));
-			
-			QnABoardService service = new QnABoardService();
-			QnABoardDTO dto = service.seleclt(pick);
-			
-			request.setAttribute("QnABoard", dto);
+		QnABoardService service = new QnABoardService();
+		PagingQnABoardDTO paging = new PagingQnABoardDTO();
+		if(request.getParameter("page") != null) {
+			paging.setPage(Integer.parseInt(request.getParameter("page")));
 		}
-
-		RequestDispatcher dis = request.getRequestDispatcher("qna_boardForm.jsp");
+		paging = service.selectAllQnABorder(paging);
+		
+		request.setAttribute("paging", paging);
+		RequestDispatcher dis = request.getRequestDispatcher("qna_boardListForm.jsp");
 		dis.forward(request, response);
 	}
 

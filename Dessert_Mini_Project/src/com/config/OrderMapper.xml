@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="OrderMapper">
+
+	<select id="orderConfirm" parameterType="OrderDTO" resultType="OrderDTO">
+		select categoryname, fcode,  ftitle, content, fprice, fimage, fmainimage, foption, optionname, optionprice, stock from food
+		natural join foodoption
+		natural join category
+		where fcode = #{fcode} and foption = #{foption}
+	</select>
+
+</mapper>

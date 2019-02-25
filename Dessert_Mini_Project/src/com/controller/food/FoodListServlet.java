@@ -1,4 +1,4 @@
-package com.food;
+package com.controller.food;
 
 import java.io.IOException;
 import java.util.List;
@@ -14,8 +14,9 @@ import com.dto.FoodInfoDTO;
 import com.dto.PagingFoodListDTO;
 import com.service.FoodService;
 
-@WebServlet("/NewFoodList")
-public class FoodNewListServlet extends HttpServlet {
+@WebServlet("/FoodList")
+public class FoodListServlet extends HttpServlet {
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PagingFoodListDTO paging = new PagingFoodListDTO();
 		if (request.getParameter("page") != null) {
@@ -25,12 +26,19 @@ public class FoodNewListServlet extends HttpServlet {
 		FoodService service = new FoodService();
 		String nextPage = null;
 		
-		paging = service.foodList(paging);
-		request.setAttribute("flist", paging);
-		nextPage = "foodListForm.jsp";
+		if(request.getParameter("category") != null) {
+			paging.setCategory(Integer.parseInt(request.getParameter("category")));
+			paging = service.foodList(paging);
+			request.setAttribute("flist", paging);
+			nextPage = "foodListForm.jsp";
+		} else{
+			request.setAttribute("mesg", "잘못된 접근입니다.");
+			nextPage = "main";
+		}
 		
 		RequestDispatcher dis = request.getRequestDispatcher(nextPage);
 		dis.forward(request, response);
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

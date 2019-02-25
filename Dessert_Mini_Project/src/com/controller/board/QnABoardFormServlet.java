@@ -1,4 +1,4 @@
-package com.board;
+package com.controller.board;
 
 import java.io.IOException;
 
@@ -9,18 +9,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/qna_CommentBoardForm")
-public class Qna_CommentBoardFormServlet extends HttpServlet {
+import com.dto.QnABoardDTO;
+import com.service.QnABoardService;
+
+@WebServlet("/QnABoardForm")
+public class QnABoardFormServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int pick = Integer.parseInt(request.getParameter("pick"));
-		
-		
-		
-		RequestDispatcher dis = request.getRequestDispatcher("");
+		if(request.getParameter("pick") != null) {
+			int pick = Integer.parseInt(request.getParameter("pick"));
+			
+			QnABoardService service = new QnABoardService();
+			QnABoardDTO dto = service.seleclt(pick);
+			
+			request.setAttribute("QnABoard", dto);
+		}
+
+		RequestDispatcher dis = request.getRequestDispatcher("qna_boardForm.jsp");
 		dis.forward(request, response);
-		
-		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

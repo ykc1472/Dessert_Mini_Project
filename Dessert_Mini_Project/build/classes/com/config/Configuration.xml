@@ -11,6 +11,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
     	<typeAlias type="com.dto.FoodInfoDTO" alias="FoodInfoDTO"/>
     	<typeAlias type="com.dto.QnABoardDTO" alias="QnABoardDTO"/>
     	<typeAlias type="com.dto.QnABoardCommentDTO" alias="QnABoardCommentDTO"/>
+    	<typeAlias type="com.dto.OrderDTO" alias="OrderDTO"/>
     	
    </typeAliases>
    
@@ -29,6 +30,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="com/config/MemberMapper.xml" />
 		<mapper resource="com/config/BoardMapper.xml" />
 		<mapper resource="com/config/FoodMapper.xml" />
+		<mapper resource="com/config/OrderMapper.xml" />
 	</mappers>
 </configuration>
 

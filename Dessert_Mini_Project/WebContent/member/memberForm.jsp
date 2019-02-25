@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script type="text/javascript" src="content/js/memberform.js"></script>
+<script type="text/javascript" src="content/js/postAddress.js"></script>
 <link rel="stylesheet" href="content/css/memberForm.css">
 <script type="text/javascript">
 

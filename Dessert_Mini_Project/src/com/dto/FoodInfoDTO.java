@@ -1,6 +1,7 @@
 package com.dto;
 
 public class FoodInfoDTO {
+	
 	private int sales;
 	private String fcode; // 푸드코드
 	private String ftitle;
@@ -19,6 +20,15 @@ public class FoodInfoDTO {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
+
+	public FoodInfoDTO(String fcode, int foption) {
+		super();
+		this.fcode = fcode;
+		this.foption = foption;
+	}
+
+
 
 	public FoodInfoDTO(String fcode, String ftitle, int fprice, String fimage, int fcategory, String content,
 			String fmainimage, int foption, int optionprice, int stock, String optionname) {

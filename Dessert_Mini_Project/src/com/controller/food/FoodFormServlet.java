@@ -1,4 +1,4 @@
-package com.food;
+package com.controller.food;
 
 import java.io.IOException;
 import java.util.List;
