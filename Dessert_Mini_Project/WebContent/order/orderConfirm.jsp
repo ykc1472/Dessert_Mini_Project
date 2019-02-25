@@ -22,11 +22,54 @@
 				$("#phone").val("");
 			}
 		})
+		
+		////////////////////////////////////////////////
+		
+		$('.btn-example').click(function(){
+	        var $href = $(this).attr('href');
+	        layer_popup($href);
+	    });
+	    function layer_popup(el){
+
+	        var $el = $(el);        //레이어의 id를 $el 변수에 저장
+	        var isDim = $el.prev().hasClass('dimBg');   //dimmed 레이어를 감지하기 위한 boolean 변수
+
+	        isDim ? $('.dim-layer').fadeIn() : $el.fadeIn();
+
+	        var $elWidth = ~~($el.outerWidth()),
+	            $elHeight = ~~($el.outerHeight()),
+	            docWidth = $(document).width(),
+	            docHeight = $(document).height();
+
+	        // 화면의 중앙에 레이어를 띄운다.
+	        if ($elHeight < docHeight || $elWidth < docWidth) {
+	            $el.css({
+	                marginTop: -$elHeight /2,
+	                marginLeft: -$elWidth/2
+	            })
+	        } else {
+	            $el.css({top: 0, left: 0});
+	        }
+
+	        $el.find('a.btn-layerClose').click(function(){
+	            isDim ? $('.dim-layer').fadeOut() : $el.fadeOut(); // 닫기 버튼을 클릭하면 레이어가 닫힌다.
+	            return false;
+	        });
+
+	        $('.layer .dimBg').click(function(){
+	            $('.dim-layer').fadeOut();
+	            return false;
+	        });
+
+	    }
+		
+		////////////////////////////////////////////////
+		
 	})
 </script>
 <div align="center">
 <form name="myForm" method="post" action="">
-	<table width="80%" cellspacing="0" cellpadding="0" border="1">
+	<table width="80%" cellspacing="0" cellpadding="0">
 
 		<tr>
 			<td height="30">
@@ -52,7 +95,7 @@
 
 		<tr>
 			<td>
-				<table width="100%" cellspacing="0" cellpadding="0" border="1">
+				<table width="100%" cellspacing="0" cellpadding="0">
 					<tr>
 						<td class="td_default" align="center"><strong>주문번호</strong></td>
 						<td class="td_default" align="center" colspan="2"><strong>상품정보</strong></td>
@@ -69,23 +112,32 @@
 					<c:set var = "total" value = "0" />
 					<c:forEach items="${orderList}" varStatus="i" var="order">
 					<tr>
-						<td class="td_default" width="80" align="center">${i.count}</td>
+						<td class="td_default" width="80" align="center">${i.count}
+						<input type="hidden" value="${order.foption}" name="foption" id="foption"><input type="hidden" value="${order.fcode}" name="fcode" id="fcode">
+						</td>
 						<td class="td_default" width="80" align="center"><img src="content/image/food/${order.fmainimage}.jpg" border="0" width="80"></td>
-						<td class="td_default" width="300" style="padding-left: 30px">${order.ftitle}
+						<td class="td_default" width="500" style="padding-left: 30px">${order.ftitle}
 						<br>${order.content}
 						<br><font size="2" color="#665b5f">[옵션  ${order.foption}: ${order.optionname}]</font></td>
 						<td class="td_default" align="center" width="110"><fmt:formatNumber value='${order.fprice + order.optionprice}' pattern='###,###,###' /> 원
 						</td>
-						<td class="td_default" align="center" width="90"><input type="text" value="${order.amount}" readonly="readonly"></td>
+						<td class="td_default" align="center" width="90"><input type="text" value="${order.amount}" name="amount" readonly="readonly"></td>
 						<td align="right"><b><span style="color: blue; font-size: 15px;"><fmt:formatNumber value='${(order.fprice + order.optionprice) * order.amount}' pattern='###,###,###' /> 원</span></b></td>
 						<c:set var= "total" value="${total + (order.fprice + order.optionprice) * order.amount}"/>
 					</tr>
+					<tr>
+						<td colspan="6">
+							<hr size="1" color="CCCCCC">
+						</td>
+					</tr>
 					</c:forEach>
-
+					
 					<tr>
 						<td height="30"></td>
-						<td class="td_default" align="right" colspan="2">총 결제 금액 :</td>
-						<td class="td_default" align='right' colspan="4"><b><span style="color: red; font-size: 20px;" id="totalPrice"><fmt:formatNumber value='${total}' pattern='###,###,### 원' /></span></b></td>
+						<td class="td_default" align="right" colspan="3">총 결제 금액 :</td>
+						<td class="td_default" align='right' colspan="3"><b><span style="color: red; font-size: 20px;" id="totalPrice"><fmt:formatNumber value='${total}' pattern='###,###,### 원' /></span></b>
+							<input type="hidden" name="payment" value="${total}">
+						</td>
 					</tr>
 				</table> 
 			<tr>
