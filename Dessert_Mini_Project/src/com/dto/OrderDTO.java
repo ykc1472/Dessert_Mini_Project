@@ -9,6 +9,8 @@ public class OrderDTO extends FoodInfoDTO {
 	private int state;
 	private int amount;
 	private int addr_post;
+	private int payMethod;
+	private int payment;
 	private String addr_f;
 	private String addr_l;
 
@@ -22,12 +24,22 @@ public class OrderDTO extends FoodInfoDTO {
 		// TODO Auto-generated constructor stub
 	}
 
+	public OrderDTO(String fcode, int foption, String userid, int amount, int addr_post, String addr_f, String addr_l) {
+		super(fcode, foption);
+		this.userid = userid;
+		this.amount = amount;
+		this.addr_post = addr_post;
+		this.addr_f = addr_f;
+		this.addr_l = addr_l;
+	}
+
 	public OrderDTO(String fcode, String ftitle, int fprice, String fimage, int fcategory, String content,
 			String fmainimage, int foption, int optionprice, int stock, String optionname) {
 		super(fcode, ftitle, fprice, fimage, fcategory, content, fmainimage, foption, optionprice, stock, optionname);
 		// TODO Auto-generated constructor stub
 	}
-
+	
+	
 	public OrderDTO(String fcode, int foption, String userid, int amount) {
 		super(fcode, foption);
 		this.userid = userid;
@@ -43,6 +55,20 @@ public class OrderDTO extends FoodInfoDTO {
 		this.state = state;
 		this.amount = amount;
 		this.addr_post = addr_post;
+		this.addr_f = addr_f;
+		this.addr_l = addr_l;
+	}
+	
+	
+
+	public OrderDTO(String fcode, int foption, String userid, int amount, int addr_post,
+			String addr_f, String addr_l, int payMethod, int payment) {
+		super(fcode, foption);
+		this.userid = userid;
+		this.amount = amount;
+		this.addr_post = addr_post;
+		this.payMethod = payMethod;
+		this.payment = payment;
 		this.addr_f = addr_f;
 		this.addr_l = addr_l;
 	}
@@ -109,6 +135,23 @@ public class OrderDTO extends FoodInfoDTO {
 
 	public void setAddr_l(String addr_l) {
 		this.addr_l = addr_l;
+	}
+	
+	
+	public int getPayMethod() {
+		return payMethod;
+	}
+
+	public void setPayMethod(int payMethod) {
+		this.payMethod = payMethod;
+	}
+
+	public int getPayment() {
+		return payment;
+	}
+
+	public void setPayment(int payment) {
+		this.payment = payment;
 	}
 
 	@Override

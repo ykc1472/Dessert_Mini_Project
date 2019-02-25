@@ -10,5 +10,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		natural join category
 		where fcode = #{fcode} and foption = #{foption}
 	</select>
+	
+	<insert id="orderAllDone" parameterType="arraylist">
+		insert all
+		
+		<foreach collection="list" item="item">
+			into forder (ordernum, userid, fcode, orderamount, foption, paymethode, 
+								o_addr_post, o_addr_f, o_addr_l, payment)
+			values(order_nextval(), #{item.userid}, #{item.fcode}, #{item.orderamount}, #{item.gPrice}, #{item.gSize},#{item.gColor},
+				#{item.gAmount},#{item.gImage},#{item.orderName},#{item.post},#{item.addr1},#{item.addr2},#{item.phone}, #{item.payMethod})
+		</foreach>
+		select * from dual
+	</insert>
 
 </mapper>

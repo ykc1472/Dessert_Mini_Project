@@ -31,4 +31,10 @@ public class OrderDAO {
 		MemberDTO dto = session.selectOne("MemberMapper.orderUserInfo", userid);
 		return dto;
 	}
+	
+	public int orderDone(SqlSession session, List<OrderDTO> orderList) {
+		
+		int success = session.insert("OrderMapper.orderDone", orderList);
+		return success;
+	}
 }

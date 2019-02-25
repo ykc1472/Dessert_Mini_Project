@@ -51,7 +51,7 @@ public class OrderConfirmServlet extends HttpServlet {
 			OrderService service = new OrderService();
 			orderList = service.orderConfirm(orderList);
 			MemberDTO orderUserInfo = service.orderUserInfo(userid);
-			System.out.println(orderUserInfo);
+
 			request.setAttribute("orderUserInfo", orderUserInfo);
 			request.setAttribute("orderList", orderList);
 			nextPage = "orderConfirm.jsp";
