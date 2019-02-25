@@ -30,4 +30,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		and userpw = #{userpw}
 	</select>
 	
+		<select id="idSearch" resultType="hashmap" parameterType="MemberDTO">
+		
+		select userid, rpad(substr(userid,0,2 ), length(userid), '*') as userid2 
+		from member
+		where username=#{username} and
+		phone=#{phone} and email=#{email}
+	</select>
+	
 </mapper>
