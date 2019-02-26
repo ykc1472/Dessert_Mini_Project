@@ -36,7 +36,7 @@ public class EmailCheckServlet extends HttpServlet {
 		request.setAttribute("mailbody", mesg);
 		request.setAttribute("mailtitle", "Dessert_Mini_Project 회원가입 인증메일 입니다.");
 		request.setAttribute("userEmail", request.getParameter("userEmail"));
-		
+		request.setAttribute("nextPage", "mesg/message.jsp");
 		RequestDispatcher dis = request.getRequestDispatcher("SendMailServlet");
 		dis.forward(request, response);
 	}

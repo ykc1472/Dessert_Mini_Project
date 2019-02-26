@@ -27,7 +27,7 @@ public class SendMailServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		
+		String nextPage = (String)request.getAttribute("nextPage"); 
 		String host = "smtp.gmail.com";
 		String subject = (String)request.getAttribute("mailtitle");
 		String from = "kyeongcheol1472@gmail.com"; // 보내는 메일
@@ -71,7 +71,7 @@ public class SendMailServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 
-		RequestDispatcher dis = request.getRequestDispatcher("mesg/message.jsp");
+		RequestDispatcher dis = request.getRequestDispatcher(nextPage);
 		dis.forward(request, response);
 		
 	}// end doGet

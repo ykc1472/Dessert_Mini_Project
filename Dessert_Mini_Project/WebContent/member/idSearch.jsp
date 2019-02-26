@@ -24,16 +24,25 @@
 </script>
         
   
-<form action="MemberIdSearchServlet" method="get">
+<form action="MemberIdSearchServlet" method="post">
 <div align="center">    
 <table>
 <tr>
-   <td>이름</td>
+	<td colspan="2"><hr></td>
+</tr>
+<tr>
+   <td align="center">이름</td>
    <td><input type="text" name="username"></td>
 </tr>
 <tr>
-   <td>휴대폰 </td>
+	<td colspan="2"><hr></td>
+</tr>
+<tr>
+   <td align="center">휴대폰</td>
    <td><input type="text" name="phone"></td>
+</tr>
+<tr>
+	<td colspan="2"><hr></td>
 </tr>
 
 <tr>
@@ -49,12 +58,21 @@
       <option value="gmail.com">gmail.com</option>
       <option value="icloud.com">icloud.com</option>
    </select>
-   <span id="emailCheck">&nbsp;</span></td>
+   <span id="emailCheck">&nbsp;</span>
+   </td>
+</tr>
+<tr>
+	<td colspan="2"><hr></td>
+</tr>
    
 <tr>
-   <td colspan="2" align="center"><input type="submit" value="아이디 찾기"></td>
+   <td colspan="2" align="center"><input type="submit" value="아이디 찾기"><br>
+   
+   </td>
 </tr>
-
+<tr>
+	<td colspan="2"><hr></td>
+</tr>
 </table>
 </div>
 </form>

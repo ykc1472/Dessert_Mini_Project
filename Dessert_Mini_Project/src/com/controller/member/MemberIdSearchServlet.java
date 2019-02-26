@@ -18,42 +18,44 @@ public class MemberIdSearchServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		String username = request.getParameter("username").trim();
-		String phone = request.getParameter("phone").trim();
-		String email = request.getParameter("userEMail").trim();
-
-		MemberDTO dto = new MemberDTO();
-
-		dto.setUsername(username);
-		dto.setPhone(phone);
-		dto.setEmail(email);
-
-		System.out.println(dto);
-		/*
-		 * String to = mailTo; //받는 메일 String content = "아이디:" + userid;
-		 */
+		MemberDTO dto = null;
+		String username = null;
+		String phone = null;
+		String email = null;
+		if(request.getParameter("username") != null && request.getParameter("username") != null &&request.getParameter("username") != null) {
+			dto = new MemberDTO();
+			username = request.getParameter("username").trim();
+		 	phone = request.getParameter("phone").trim();
+			email = request.getParameter("userEMail").trim();
+			
+			dto.setUsername(username);
+			dto.setPhone(phone);
+			dto.setEmail(email);
+		}
+		
 
 		MemberService service = new MemberService();
 
 		HashMap<String, String> map = new HashMap<>();
 		map = service.idSearch(dto);
 
-		// String userid = service.idSearch(dto);
 		String nextPage = null;
 		if (map == null) {
 			nextPage = "MemberIdSearchUIServlet";
 			request.setAttribute("mesg", "이름 또는 핸드폰이 등록되지 않은 정보");
 
 		} else {
+			String mailtitle = "Dessert_Mini_Project 회원가입 아이디 찾기 메일";
+			String mailbody = null;
 
-			String userid = map.get("USERID");
-			String userid2 = map.get("USERID2");
-
-			nextPage = "SendMailIdSearchServlet";
-			request.setAttribute("userid", userid);
-			request.setAttribute("userid2", userid2);
-			request.setAttribute("email", email);
+			mailbody = "<h1>Dessert_Mini_Project</h1><h3>아이디찾기 메일입니다.</h3>"
+					+ "<h3>아이디는 :</h3><h1>" + map.get("USERID") + "</h1><h3>입니다.</h3>";
+			nextPage = "SendMailServlet";
+			request.setAttribute("mailtitle", mailtitle);
+			request.setAttribute("mailbody", mailbody);
+			request.setAttribute("userid2", map.get("USERID2"));
+			request.setAttribute("userEmail", email);
+			request.setAttribute("nextPage", "idSearchResult.jsp");
 
 			
 		}

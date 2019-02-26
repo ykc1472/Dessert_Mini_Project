@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<div class="menus" align='center'>
+<div class="menus" align='center' style="margin-bottom: 20px;">
 	<table>
 		<tr>
 			<td width="120" align='center'><a href="NewFoodList" class="menu">New</a></td>
