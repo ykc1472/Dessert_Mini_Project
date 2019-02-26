@@ -36,6 +36,7 @@ public class OrderDAO {
 		
 		int success = 0;
 		for(OrderDTO order : orderList) {
+			
 			success += session.insert("OrderMapper.orderAllDone", order);
 		}
 		
@@ -50,7 +51,7 @@ public class OrderDAO {
 	public int updateOptionStock(SqlSession session, List<OrderDTO> orderList){
 		int success = 0;
 		for(OrderDTO order : orderList) {
-			success += session.update("OrderMapper.selectOrderAllDone", order);
+			success += session.update("OrderMapper.updateOptionStock", order);
 		}
 		return success;
 	}

@@ -50,7 +50,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<update id="updateOptionStock" parameterType="OrderDTO">
 		UPDATE foodoption
-		set stock = 
+		set stock = stock - #{amount} 
 		where fcode = #{fcode}
 		and foption = #{foption}
 	</update>

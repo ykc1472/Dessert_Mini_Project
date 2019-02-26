@@ -5,7 +5,6 @@ import java.sql.Date;
 public class OrderDTO extends FoodInfoDTO {
 	private int ordernum;
 	private String userid;
-	private String username;
 	private String orderdate;
 	private int state;
 	private int amount;
