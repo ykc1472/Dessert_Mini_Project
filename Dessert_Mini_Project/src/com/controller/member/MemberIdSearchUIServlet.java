@@ -1,4 +1,4 @@
-package com.controller.main;
+package com.controller.member;
 
 import java.io.IOException;
 
@@ -9,16 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/main")
-public class MainServlet extends HttpServlet {
+
+@WebServlet("/MemberIdSearchUIServlet")
+public class MemberIdSearchUIServlet extends HttpServlet {
+
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		RequestDispatcher dis = request.getRequestDispatcher("main.jsp");
+		RequestDispatcher dis = request.getRequestDispatcher("idSearch.jsp");
 		dis.forward(request, response);
 	
 	}
 
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
