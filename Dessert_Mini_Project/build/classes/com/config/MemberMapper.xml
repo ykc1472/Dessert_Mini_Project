@@ -44,4 +44,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		
 	</select>
 	
+	<select id="passwdSearch2" resultType="string"
+		parameterType="MemberDTO">
+		select userpw
+		from member
+		where userid=#{userid}
+	</select>
+
+	<select id="passwdSearch" resultType="string"
+		parameterType="MemberDTO">
+		select userpw
+		from member
+		where username=#{username} and userid=#{userid} and email=#{email}
+	</select>
+	
 </mapper>

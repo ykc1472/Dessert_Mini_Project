@@ -9,11 +9,10 @@
 <link rel="stylesheet" type="text/css" href="css/menu.css">
 </head>
 <body>
-
 <div align="right">
-<jsp:include page="common/top.jsp" flush="true" /><br>
+	<jsp:include page="common/top.jsp" flush="true" /><br>
 </div>
-<jsp:include page="common/menu.jsp" flush="true" />
-<hr>
-<jsp:include page="member/idSearch.jsp" flush="true" />
+	<jsp:include page="common/menu.jsp" flush="true" />
+	<jsp:include page="member/passwdSearch.jsp" flush="true" />
+</body>
 </html>

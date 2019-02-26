@@ -105,4 +105,33 @@ public class MemberService {
 		}
 		return map;
 	}
+	
+	public String passwdSearch2(MemberDTO dto) {
+		SqlSession session = MySqlSessionFactory.getSession();
+		String userpw = null;
+		try {
+			MemberDAO dao = new MemberDAO();
+			userpw = dao.passwdSearch2(session, dto);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		return userpw;
+	}
+	
+	public String passwdSearch(MemberDTO dto) {
+		SqlSession session = MySqlSessionFactory.getSession();
+		String userpw = null;
+		try {
+			MemberDAO dao = new MemberDAO();
+			userpw = dao.passwdSearch(session, dto);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		return userpw;
+	}
+	
 }

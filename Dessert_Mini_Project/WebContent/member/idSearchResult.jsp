@@ -29,8 +29,9 @@
 			<td align="center"><button id= "login">로그인</button></td>
 		</tr>
 		<tr>
-			<td>아이디 전체는 메일에서 확인해 주시기 바랍니다.</td>
+			<td><hr></td>
 		</tr>
+		
 	</table>
 </div>
 	

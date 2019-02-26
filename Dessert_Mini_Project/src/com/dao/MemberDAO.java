@@ -41,4 +41,14 @@ public class MemberDAO {
 		HashMap map = session.selectOne("MemberMapper.idSearch",dto);
 		return map;
 	}
+	
+	public String passwdSearch2(SqlSession session, MemberDTO dto) {
+		String success = session.selectOne("MemberMapper.passwdSearch2",dto);
+		return success;
+	}
+	
+	public String passwdSearch(SqlSession session, MemberDTO dto) {
+		String success = session.selectOne("MemberMapper.passwdSearch",dto);
+		return success;
+	}
 }
