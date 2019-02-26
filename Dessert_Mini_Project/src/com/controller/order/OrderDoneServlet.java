@@ -59,6 +59,7 @@ public class OrderDoneServlet extends HttpServlet {
 			for(int i = 0 ; i < fcode.length ; i++) {
 				orderList.add(new OrderDTO(fcode[i], Integer.parseInt(foption[i]), userid, Integer.parseInt(amount[i]), post, address_f, address_l, payMethod, payment));
 			}
+			
 			orderList = service.orderDone(orderList);
 			request.setAttribute("orderUserInfo", service.orderUserInfo(userid));
 			request.setAttribute("orderCount", orderList.size());

@@ -44,7 +44,6 @@ public class OrderDAO {
 	}
 	
 	public List<OrderDTO> selectOrderAllDone(SqlSession session, List<OrderDTO> orderList){
-		
 		return session.selectList("OrderMapper.selectOrderAllDone", orderList);
 	}
 	
