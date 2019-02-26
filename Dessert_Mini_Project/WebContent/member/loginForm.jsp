@@ -38,7 +38,7 @@
 			</tr>
 			<tr>
 				<td colspan="2" align="center">
-					<a href="#" class="login">아이디찾기</a> &nbsp;/&nbsp; <a href="#" class="login">비밀번호 찾기</a>
+					<a href="MemberIdSearchUIServlet" class="login">아이디찾기</a> &nbsp;/&nbsp; <a href="#" class="login">비밀번호 찾기</a>
 				</td>
 			</tr>
 		</table>

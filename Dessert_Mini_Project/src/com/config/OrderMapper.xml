@@ -10,5 +10,49 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		natural join category
 		where fcode = #{fcode} and foption = #{foption}
 	</select>
-
+	
+	<insert id="orderAllDone2" parameterType="arraylist">
+		insert all
+		
+		<foreach collection="list" item="item">
+			into forder (ordernum, userid, fcode, orderamount, foption, paymethode, o_addr_post, o_addr_f, o_addr_l, payment)
+			values(order_nextval(), #{item.userid}, #{item.fcode}, #{item.amount}, #{item.foption}, #{item.addr_post}, #{item.addr_f}, 
+			#{item.addr_f},	#{item.addr_l}, #{item.payment})
+		</foreach>
+		select * from dual
+	</insert>
+	
+	<insert id="orderAllDone" parameterType="OrderDTO">
+		
+		<selectKey keyProperty="ordernum" resultType="int" order="BEFORE">
+    		select order_num.nextval from dual
+  		</selectKey>
+  		
+		insert into forder (ordernum, userid, fcode, orderamount, foption, paymethode, o_addr_post, o_addr_f, o_addr_l, payment)
+			values(#{ordernum}, #{userid}, #{fcode}, #{amount}, #{foption}, #{addr_post}, #{addr_f}, 
+			#{addr_f}, #{addr_l}, #{payment})
+	</insert>
+	
+	<select id="selectOrderAllDone" resultType="OrderDTO" parameterType="arraylist">
+		select ordernum, userid, to_char(orderdate, 'yy/mm/dd')orderdate, 
+		categoryname fcategoryname, ftitle, content, foption, 
+		optionname, fprice, optionprice, fmainimage, orderamount amount, paymethode, 
+		o_addr_post addr_post, o_addr_f addr_f,	o_addr_l addr_l 
+		from food
+		NATURAL join foodoption
+		NATURAL join forder
+		natural join category 
+		where ordernum in
+		<foreach collection="list" open="(" separator=", " close=")" item="item">
+			#{item.ordernum}
+		</foreach>
+	</select>
+	
+	<update id="updateOptionStock" parameterType="OrderDTO">
+		UPDATE foodoption
+		set stock = stock - #{amount} 
+		where fcode = #{fcode}
+		and foption = #{foption}
+	</update>
+	
 </mapper>

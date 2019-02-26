@@ -10,7 +10,7 @@
 		$("#samePost").on("click", function(event){
 			if(this.checked){
 				$("#orderName").val($("#mname").val());
-				$("#postcode").val($("#post").val());
+				$("#postcode").val($("#mpost2").val());
 				$("#roadAddress").val($("#maddress1").val());
 				$("#jibunAddress").val($("#maddress2").val());
 				$("#phone").val($("#mphone").val());
@@ -68,7 +68,7 @@
 	})
 </script>
 <div align="center">
-<form name="myForm" method="post" action="">
+<form name="myForm" method="post" action="orderDone">
 	<table width="80%" cellspacing="0" cellpadding="0">
 
 		<tr>
@@ -327,7 +327,7 @@
 	<tr>
 		<td class="td_default" align="center">
 			<input type='button' value='취소' onclick="javascript:history.back()">	
-			<input type='button' value='결제하기' onclick="orderDone(myForm)">
+			<input type="submit" value='결제하기' id="orderDone">
 		</td>
 	</tr>
 
