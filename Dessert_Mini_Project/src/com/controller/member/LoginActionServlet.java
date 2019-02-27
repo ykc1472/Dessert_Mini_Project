@@ -41,12 +41,11 @@ public class LoginActionServlet extends HttpServlet {
 			
 			if(session.getAttribute("backPage") != null) {
 				nextPage = (String)session.getAttribute("backPage");
+				session.removeAttribute("backPage");
 			}
 			else {
 				nextPage = "main";
 			}
-			
-			
 		}
 		
 		response.sendRedirect(nextPage);

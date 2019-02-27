@@ -97,7 +97,7 @@
 			<td>
 				<table width="100%" cellspacing="0" cellpadding="0">
 					<tr>
-						<td class="td_default" align="center"><strong>주문번호</strong></td>
+						<td class="td_default" align="center"><strong>주문</strong></td>
 						<td class="td_default" align="center" colspan="2"><strong>상품정보</strong></td>
 						<td class="td_default" align="center"><strong>판매가</strong></td>
 						<td class="td_default" align="center"><strong>수량</strong></td>

@@ -38,6 +38,9 @@ public class CartAddServlet extends HttpServlet {
 		}
 		
 		if(session.getAttribute("loginInfo") == null) {
+			String url =  request.getHeader("referer");
+			url = url.substring(url.indexOf(request.getContextPath())+request.getContextPath().length()+1, url.length());
+			session.setAttribute("backPage", url);
 			mesg = "로그인이 필요한 작업입니다.";
 			nextPage = "loginForm.jsp";
 			request.setAttribute("mesg", mesg);
