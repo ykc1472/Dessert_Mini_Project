@@ -180,7 +180,7 @@
 					</tr>
 					<tr>
 						<td colspan="3" align="center">
-							<img src="content/image/food/A08_1.jpg" class="goods" />
+							<img src="content/image/food/${foodinfoList[0].fimage}.jpg" class="goods" />
 						</td>
 				</table>
 			</form>
