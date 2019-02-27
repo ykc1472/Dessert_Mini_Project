@@ -31,6 +31,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="com/config/BoardMapper.xml" />
 		<mapper resource="com/config/FoodMapper.xml" />
 		<mapper resource="com/config/OrderMapper.xml" />
+		<mapper resource="com/config/CartMapper.xml" />
 	</mappers>
 </configuration>
 

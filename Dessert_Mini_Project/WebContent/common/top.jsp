@@ -31,7 +31,7 @@
 			</c:when>
 		
 			<c:otherwise>
-				<a href="loginForm.jsp" class="menuTop">로그인</a>&nbsp;&nbsp;
+				<a href="loginForm" class="menuTop">로그인</a>&nbsp;&nbsp;
 				<a href="memberForm.jsp" class="menuTop">회원가입</a>&nbsp;
 			</c:otherwise>
 		</c:choose>

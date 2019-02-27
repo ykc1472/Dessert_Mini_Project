@@ -117,7 +117,7 @@
 				$("form").attr("action", "orderConfirm");
 				
 			} else if($(this).attr("id") == "cart"){
-				
+				$("form").attr("action", "cartAdd");
 			}
 		})
 	})
