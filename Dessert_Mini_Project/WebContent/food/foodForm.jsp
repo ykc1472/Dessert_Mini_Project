@@ -6,6 +6,15 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 
+		//옵션 선택 하지 않을 경우 창이 넘어가지 않고, 알림창
+		$("#order").on("click", function(event) {
+			var result = $("#result").html().trim();
+					if (result.length==0) {
+						alert("옵션을 선택해주세요.");
+						event.preventDefault();
+					}
+				});
+
 		// 옵션 선택에 따라 테이블을 추가해주는 부분
 		$("#options").on("change", function(event){
 			if($(this).val() != '#'){
