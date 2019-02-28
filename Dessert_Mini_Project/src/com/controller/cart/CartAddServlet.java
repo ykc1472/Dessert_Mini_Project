@@ -55,6 +55,7 @@ public class CartAddServlet extends HttpServlet {
 			CartService service = new CartService();
 			List<OrderDTO> list = service.addCart(cartList);
 			if(list.size() == 0) {
+				request.setAttribute("success", cartList.size());
 				nextPage = "cartAddForm.jsp";
 			} else {
 				nextPage = request.getHeader("referer");
