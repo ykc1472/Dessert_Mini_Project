@@ -87,8 +87,6 @@ $(document).ready(function(){
 		// Length at least 8 chars long
 		if (password.length >= 8)
 			score++;
-
-		// both lower and uppercase chars
 		if (password.match(/[a-z]/) && password.match(/[A-Z]/))
 			score++;
 
@@ -105,6 +103,8 @@ $(document).ready(function(){
 			score++;
 
 		return score;
+		// both lower and uppercase chars
+		
 	}
 	$("#phoneNumber").on("change", function(event){
 		// 휴대폰 번호 가입 중복 체크 Start
