@@ -37,4 +37,18 @@ public class CartService {
 		
 		return list;
 	}
+	
+	public List<OrderDTO> selectCartList(String userid){
+		List<OrderDTO> cartList = null;
+		CartDAO dao = new CartDAO();
+		SqlSession session = MySqlSessionFactory.getSession();
+		try {
+			cartList = dao.selectCartList(session, userid);
+		} finally {
+			if(session != null)
+				session.close();
+		}
+		
+		return cartList;
+	}
 }

@@ -26,7 +26,7 @@
 		<c:choose>
 			<c:when test="${loginInfo != null }">
 				<a href="Logout" class="menuTop">로그아웃</a>&nbsp;&nbsp;
-				<a href="" class="menuTop">장바구니</a>&nbsp;&nbsp;
+				<a href="cartList" class="menuTop">장바구니</a>&nbsp;&nbsp;
 				<a href="" class="menuTop">나의정보</a>&nbsp;
 			</c:when>
 		
