@@ -14,5 +14,11 @@ public class CartDAO {
 	public List<OrderDTO> selectAddInfoCart(SqlSession session, List<OrderDTO> cartList) {
 		return session.selectList("CartMapper.selectAddInfoCart", cartList);
 	}
+	
+	public List<OrderDTO> selectCartList(SqlSession session, String userid){
+		System.out.println(userid);
+		// 유저의 cart 정보를 보여주는 쿼리
+		return session.selectList("CartMapper.selectCartList", userid);
+	}
 
 }

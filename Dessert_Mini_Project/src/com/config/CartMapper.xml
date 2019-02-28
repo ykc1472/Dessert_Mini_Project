@@ -23,4 +23,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from dual
 	</insert>
 	
+	<select id="selectCartList" parameterType="string" resultType="OrderDTO">
+		select fcode, ftitle, foption, optionname, fmainimage, content, fcategory, categoryname, fprice, optionprice, famount amount, stock from usercart
+		natural join food
+		natural join foodoption
+		natural join category
+		where userid = #{userid}
+	</select>
+	
 </mapper>
