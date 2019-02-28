@@ -5,8 +5,17 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <script type="text/javascript">
 	$(document).ready(function(){
+		
+		//옵션 선택 하지 않을 경우 창이 넘어가지 않고, 알림창('장바구니추가'버튼)
+		$("#cart").on("click", function(event) {
+			var result = $("#result").html().trim();
+					if (result.length==0) {
+						alert("옵션을 선택해주세요.");
+						event.preventDefault();
+					}
+				});
 
-		//옵션 선택 하지 않을 경우 창이 넘어가지 않고, 알림창
+		//옵션 선택 하지 않을 경우 창이 넘어가지 않고, 알림창('주문하기'버튼)
 		$("#order").on("click", function(event) {
 			var result = $("#result").html().trim();
 					if (result.length==0) {
