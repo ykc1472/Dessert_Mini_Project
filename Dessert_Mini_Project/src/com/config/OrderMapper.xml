@@ -16,8 +16,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		
 		<foreach collection="list" item="item">
 			into forder (ordernum, userid, fcode, orderamount, foption, paymethode, o_addr_post, o_addr_f, o_addr_l, payment)
-			values(order_nextval(), #{item.userid}, #{item.fcode}, #{item.amount}, #{item.foption}, #{item.addr_post}, #{item.addr_f}, 
-			#{item.addr_f},	#{item.addr_l}, #{item.payment})
+			values(order_nextval(), #{item.userid}, #{item.fcode}, #{item.amount}, #{item.foption}, #{item.payMethod}, #{item.addr_post}, #{item.addr_f}, 
+			#{item.addr_l}, #{item.payment})
 		</foreach>
 		select * from dual
 	</insert>
@@ -29,7 +29,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   		</selectKey>
   		
 		insert into forder (ordernum, userid, fcode, orderamount, foption, paymethode, o_addr_post, o_addr_f, o_addr_l, payment)
-			values(#{ordernum}, #{userid}, #{fcode}, #{amount}, #{foption}, #{addr_post}, #{addr_f}, 
+			values(#{ordernum}, #{userid}, #{fcode}, #{amount}, #{foption}, #{payMethod}, #{addr_post}, 
 			#{addr_f}, #{addr_l}, #{payment})
 	</insert>
 	

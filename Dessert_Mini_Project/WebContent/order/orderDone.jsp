@@ -73,8 +73,7 @@
 
 	<tr>
 		<td>
-			<table width="100%" border="1" style="border-collapse: collapse"
-				bordercolor="#CCCCCC">
+			<table width="100%" border="1" style="border-collapse: collapse" bordercolor="#CCCCCC">
 				<tr>
 					<td class="td_default" width="100" height="35" align="center"><strong>주문번호</strong>
 					<td width="200" class="td_default" height="35" align="center" colspan="2"><strong>상품명</strong></td>

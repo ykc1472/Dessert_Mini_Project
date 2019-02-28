@@ -51,6 +51,7 @@ public class OrderService {
 			if(insert_success == orderList.size() && insert_success == update_success) {
 				session.commit();
 				orderList = dao.selectOrderAllDone(session, orderList);
+				
 			}else {
 				throw new Exception("모든 상품이 Insert되지 못함");
 			}
