@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="FoodMapper">
+
+	<select id="FoodList" resultType="FoodInfoDTO" parameterType="int">
+		select fcode, ftitle, fprice, content, fmainimage from food
+		<where>
+			<if test="_parameter != 0">
+				fcategory = #{fcategory}
+			</if>
+		</where>
+	</select>
+	
+	<select id="foodTotalCount" resultType="int" parameterType="int">
+		select count(*) from food
+		<where>
+			<if test="_parameter != 0">
+				fcategory = #{fcategory}
+			</if>
+		</where>
+	</select>
+	
+	<select id="foodInfo" resultType="FoodInfoDTO" parameterType="string">
+		select categoryname, fcode, ftitle, fprice, fimage, fmainimage, foption, optionname, optionprice, stock from food
+		natural join foodoption
+		natural join category
+		where fcode = #{fcode}
+	</select>
+	
+	<select id="foodNewList" resultType="FoodInfoDTO">
+		select fcode, ftitle, fprice, fmainimage from food
+		where registration >= (select (sysdate - 15) from dual)
+		order by REGISTRATION desc
+	</select>
+	
+	<select id="foodNewTotal" resultType="int">
+		select count(*) from food
+		where registration >= (select (sysdate - 15) from dual)
+		order by REGISTRATION desc
+	</select>
+	
+	<select id="searchFoodList" resultType="hashmap" parameterType="String">
+		select ftitle from food
+		where ftitle like '%'|| #{search} || '%'
+	</select>
+	
+	<select id="searchingList" resultType="FoodInfoDTO" parameterType="String">
+		select fcode, ftitle, fprice, content, fmainimage from food
+		where ftitle like '%'|| #{search} || '%'
+	</select>
+	
+	<select id="searchingListTotal" resultType="int" parameterType="String">
+		select count(*) from food
+		where ftitle like '%'|| #{search} || '%'
+	</select>
+	
+	<select id="checkStock" resultType="int" parameterType="hashmap">
+		select stock from foodoption
+		where fcode = #{fcode}
+		and foption = #{foption}
+	</select>
+</mapper>
