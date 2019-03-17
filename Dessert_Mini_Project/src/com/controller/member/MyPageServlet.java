@@ -16,27 +16,35 @@ import com.service.MemberService;
 @WebServlet("/MyPageServlet")
 public class MyPageServlet extends HttpServlet {
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		MemberDTO dto = (MemberDTO) session.getAttribute("login");
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		
+		HttpSession session = request.getSession();//세션얻기
+		MemberDTO dto = (MemberDTO) session.getAttribute("loginInfo");
 		String nextPage = null;
 		if (dto != null) {
 			nextPage = "mypage.jsp";
 			String userid = dto.getUserid();
-
 			MemberService service = new MemberService();
 			MemberDTO x = service.mypage(userid);
-			session.setAttribute("login", x);
+			session.setAttribute("loginInfo", x);
+			System.out.println("효민");
 
 		} else {
 			nextPage = "LoginUIServlet";
 			request.setAttribute("mesg", "로그인이 필요한 작업입니다.");
 		}
+		
 		RequestDispatcher dis = request.getRequestDispatcher(nextPage);
 		dis.forward(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+
+	
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
