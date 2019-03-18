@@ -15,6 +15,7 @@ public class MyEncodingFilter implements Filter {
 	public void destroy() {
 		System.out.println("destroy");
 		
+		
 	}
 
 	@Override

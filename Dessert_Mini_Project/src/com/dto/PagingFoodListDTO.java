@@ -68,9 +68,9 @@ public class PagingFoodListDTO {
 
 	public void setTotal(int total) {
 		this.total = total;
-		this.totalpage = total / limit;
+		totalpage = total / limit;
 		if (total % limit != 0) {
-			this.totalpage++;
+			totalpage++;
 		}
 	}
 

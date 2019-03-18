@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BoardMapper">
+
+	<insert id="insertIntoQnaBoard" parameterType="QnABoardDTO">
+		insert into qnaboard value(qna_num, qna_title, nickname, content, <if test="qnaboard.qna_option != null">qna_option</if>)
+		values (QNAboard_NUM.nextval, #{qnaboard.qna_title}, #{qnaboard.nickname}, #{qnaboard.content} <if test="dto.qna_option != null">#{qnaboard.qna_option}</if>)
+	</insert>
+
+	<update id="updateIntoQnABoard" parameterType="QnABoardDTO">
+		update qnaboard
+		set qna_title = #{qnaboard.title},
+		content = #{qnaboard.content},
+		rewritedate = sysdate
+		where qna_num = #{qnaboard.qna_num}
+	</update>
+	
+	<select id="selectAllQnABoard" resultType="QnABoardDTO">
+		select qna_num, qna_title, nickname, content, to_char(writedate, 'yyyy"년 "mm"월 "dd"일"') writedate,  qna_option from qnaboard
+	</select>
+	
+	<select id="selectQnaCommentList" resultType="QnABoardCommentDTO" parameterType="arraylist">
+		select qna_num, qnac_title, to_char(writedate, 'yyyy"년 "mm"월 "dd"일"') writedate, content, nickname from qnaboardcomment
+		where qna_num in 
+		<foreach collection="list" open="(" separator="," close=")" item="item">#{item.qna_num}</foreach>
+	</select>
+	
+	<select id="QnACountAll" resultType="int">
+		select count(*) from qnaboard
+	</select>
+	
+	<select id="selectQnABoard" resultType="QnABoardDTO" parameterType="int">
+		select qna_num, qna_title, nickname, content, to_char(writedate, 'yyyy"년 "mm"월 "dd"일"') writedate, to_char(rewritedate, 'yyyy"년 "mm"월 "dd"일"') rewritedate
+		from qnaboard
+		where qna_num = #{qna_num}
+	</select>
+	
+</mapper>
