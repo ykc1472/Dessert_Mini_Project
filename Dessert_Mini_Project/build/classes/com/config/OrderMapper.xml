@@ -29,7 +29,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   		</selectKey>
   		
 		insert into forder (ordernum, userid, fcode, orderamount, foption, paymethode, o_addr_post, o_addr_f, o_addr_l, payment)
-			values(#{ordernum}, #{userid}, #{fcode}, #{amount}, #{foption}, #{payMethod}, #{addr_post}, 
+			values(#{ordernum}, #{userid}, #{fcode}, #{amount}, #{foption}, #{payMethode}, #{addr_post}, 
 			#{addr_f}, #{addr_l}, #{payment})
 	</insert>
 	
